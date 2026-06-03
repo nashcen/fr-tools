@@ -13,9 +13,9 @@
 
 | 结论 | 说明 |
 |------|------|
-| **通过** | 48 项 pytest 全部通过；会话级写入 sink 五版本目录 |
-| **通过** | v7.0–v7.4 离线生成与 `tests/golden/geojson/{版本}/manifest.json` 一致（4 / 8 / 140 / 140 / 136 文件）|
-| **待办** | FR 部署与 FVS 手工项（TC-DEP-01、TC-FVS-*）|
+| **通过** | 51 项 pytest 全部通过；会话级写入 sink 五版本目录 |
+| **通过** | v7.0–v7.4 离线生成与 golden manifest 一致；酉阳 7 片区（v7.0/v7.1 专项断言）|
+| **通过** | FR 五版本手工验收（TC-DEP-01、TC-FVS-*）：重庆酉阳地图展示正常（2026-06-03，产品确认）|
 
 ---
 
@@ -34,12 +34,12 @@
 
 ```text
 pytest tests/ -v
-============================== 48 passed in ~15s ==============================
+============================== 51 passed in ~16s ==============================
 ```
 
 | 套件 | 用例数 | 结果 |
 |------|--------|------|
-| test_all_versions | 19 | PASS |
+| test_all_versions | 22 | PASS |
 | test_data_layout | 4 | PASS |
 | test_settings | 4 | PASS |
 | test_coord_convert | 2 | PASS |
@@ -72,8 +72,8 @@ pytest tests/ -v
 | MCH | 3 | 3 | — |
 | VER | 10 | 10 | — |
 | GEO | 8 | 8 | — |
-| DEP | 1 | — | 待执行 |
-| FVS | 5 | — | 待执行 |
+| DEP | 1 | — | 通过（用户 sync FR）|
+| FVS | 5 | — | 通过（v7.0–v7.4 酉阳展示）|
 
 ---
 
@@ -92,8 +92,8 @@ pytest tests/ -v
 
 ## 7. 验收结论
 
-- **开发 / 自动化验收：通过**（满足 SDD + TDD 准出条：pytest 全绿、sink 生成与 golden 一致）。
-- **发布验收：待** FineReport 同步与大屏手工（`tests/TASKS.md` Phase E）。
+- **开发 / 自动化验收：通过**（pytest 全绿、sink 与 golden 一致）。
+- **发布验收：通过**（FineReport 已同步；v7.0–v7.4 大屏手工验收通过，含重庆酉阳）。
 
 ---
 

@@ -25,7 +25,7 @@
 - [x] D2 `build_all_golden_manifests.py` 生成五版本 golden
 - [x] D3 `test_all_versions.py` 参数化 manifest 回归
 - [x] D4 填写 `TEST_REPORT.md`
-- [ ] D5 手工：sync FR + FVS 抽检（可选）
+- [x] D5 手工：sync FR + FVS 五版本抽检（2026-06-03，含酉阳）
 
 ## Phase E — 验收签字
 
@@ -33,4 +33,4 @@
 |------|-----|------|
 | 开发 | 代码 + 自动化 | 完成 |
 | 测试 | TEST_REPORT | 完成 |
-| 产品 | FVS TC-FVS-* | 待手工 |
+| 产品 | FVS TC-FVS-*（v7.0–v7.4 + 酉阳） | 完成（2026-06-03）|

@@ -2,7 +2,7 @@
 
 **项目编号：** `P2025-G-001`  
 **归属：** 数智部  
-**状态：** **v7.4 生产封板**（L3 单图，验收通过）；v7.3 四图 / v7.2 / v7.1 可回退  
+**状态：** **v7.4 生产封板**（L3 单图，验收通过）；v7.0–v7.4 含重庆酉阳地图已手工验收（2026-06-03）  
 **建档日期：** 2026-06-03  
 **代码仓：** `fr-tools`（2026-06 自全量项目目录迁移）
 
@@ -50,10 +50,8 @@ fr-tools/
 ├── CLAUDE.md              # 封板保护 + FineReport 关键路径
 ├── data/
 │   ├── source/              # KML、Excel（只读）
-│   └── sink/map/农业基地-大疆测绘/  # 生成 GeoJSON
-│   ├── 1.农业基地KML/     # KML 源（大疆测绘）
-│   ├── 2.农业基地JSON/    # 本地中间 / 归档 GeoJSON
-│   └── 农业资产盘点明细.xlsx
+│   ├── source/            # KML、Excel、v2 sidecar
+│   └── sink/{五版本}/     # 生成 GeoJSON（Git 跟踪）
 ├── scripts/               # 见 openspec/specs/scripts.md
 │   ├── active/
 │   ├── lib/
@@ -78,6 +76,7 @@ fr-tools/
 | v7.2 | 2026-06-03 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | MultiPolygon L2，**封板**（可回退）|
 | v7.3 | 2026-06-03 | `Agriculture_v7.3_GCJ02_L3.fvs` | L3 三层 + **四图**，**封板**（可回退）|
 | v7.4 | 2026-06-03 | `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | L3 + **单图**，**封板 + 验收通过（当前生产）** |
+| — | 2026-06-03 | 酉阳 KML | `data/source/1.农业基地KML/4.酉阳地图KML/`；五版本 sink + FR 手工验收通过 |
 
 **版本策略（2026-06-03）：** v7.3 固定四图；v7.4 独立单图 + L1 geourl，验收通过后升为生产基线，v7.3 保留封板可回退。
 

@@ -16,7 +16,7 @@
 | `农业基地_v6.9_WGS84_Polygon` | WGS-84 | Polygon | 1 | 4 | 旧式 | — | ❌ 废弃 |
 | `农业基地_v7.0_GCJ02_Polygon` | GCJ-02 | Polygon | 1 | 4 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
 | `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | 封板可用（L1，可回退）|
-| `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 3+空 | 目录层级 L2 | ✅ FROZEN | 封板可用（L2，可回退）|
+| `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 4 | 目录层级 L2 | ✅ FROZEN | 封板可用（L2，可回退）|
 | `农业基地_v7.3_GCJ02_L3` | GCJ-02 | MultiPolygon | **3** | 4 | 基地/片区/地块 | ✅ FROZEN | 封板可用（四图，可回退）|
 | `农业基地_v7.4_GCJ02_L3_SingleMap` | GCJ-02 | MultiPolygon | **3** | 4 | 同 v7.3 | ✅ FROZEN | **生产基线（单图，验收通过）** |
 
@@ -42,7 +42,7 @@
 | CS | `农业基地_GCJ02_CS.json` | 368 | 24 | ✅ |
 | WS | `农业基地_GCJ02_WS.json` | 507 | 37 | ✅ |
 | BS | `农业基地_GCJ02_BS.json` | 10 | 2 | ✅ |
-| YY | `农业基地_GCJ02_YY.json` | 0 | 0 | ✅ 空 |
+| YY | `农业基地_GCJ02_YY.json` | 7 | 7 | ✅ 手工验收通过（2026-06-03）|
 
 已删除：`农业基地_GCJ02_CS_test.json`（2026-06-03）。
 
@@ -62,7 +62,7 @@
 | CS | `农业基地_GCJ02_CS-area.json` | 24 | 24 |
 | WS | `农业基地_GCJ02_WS-area.json` | 37 | 37 |
 | BS | `农业基地_GCJ02_BS-area.json` | 2 | 2 |
-| YY | `农业基地_GCJ02_YY-area.json` | 0 | 0 |
+| YY | `农业基地_GCJ02_YY-area.json` | 7 | 7 |
 
 仅 8 个 `*-area.json` / `*-point.json`，禁止无后缀 `.json`。
 
@@ -89,22 +89,22 @@
 
 ```
 农业基地_v7.2_GCJ02_MP_L2/
-  农业基地-area.json          ← L1：3 基地（酉阳无 KML）
+  农业基地-area.json          ← L1：4 基地（含重庆酉阳）
   农业基地-point.json
   农业基地/
     浙江常山-area.json        ← L2：24 片区
     浙江常山-point.json
     四川武胜-area.json        ← 37 片区
-    …（百色 2、酉阳 0）
+    …（百色 2、酉阳 7）
 ```
 
 | 层级 | 文件 | features | 几何 |
 |------|------|----------|------|
-| L1 | `农业基地-area.json` | 3 | MultiPolygon |
+| L1 | `农业基地-area.json` | 4 | MultiPolygon |
 | L2 常山 | `农业基地/浙江常山-area.json` | 24 | MultiPolygon |
 | L2 武胜 | `农业基地/四川武胜-area.json` | 37 | MultiPolygon |
 | L2 百色 | `农业基地/广西百色-area.json` | 2 | MultiPolygon |
-| L2 酉阳 | `农业基地/重庆酉阳-area.json` | 0 | — |
+| L2 酉阳 | `农业基地/重庆酉阳-area.json` | 7 | MultiPolygon |
 
 **与 v7.1：** 扁平 `农业基地_GCJ02_CS-area.json` → L2 `农业基地/浙江常山-area.json`。
 
@@ -178,3 +178,4 @@
 | 2026-06-03 | v7.3 | 验收通过并封板（生产基线）；`CLAUDE.md` 封板 **10** 项 |
 | 2026-06-03 | v7.4 | 目录 `农业基地_v7.4_GCJ02_L3_SingleMap`；单图 FVS L1 geourl |
 | 2026-06-03 | v7.4 | 验收通过并封板（生产基线）；`CLAUDE.md` 封板 **12** 项 |
+| 2026-06-03 | v7.0–v7.4 | 重庆酉阳 KML 入库（`4.酉阳地图KML/`）；sink 生成 7 片区；五版本 FR 手工验收通过并维持封板 |

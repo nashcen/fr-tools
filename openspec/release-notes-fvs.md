@@ -62,7 +62,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `区域地图_CS` | 浙江常山 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.0_GCJ02_Polygon/农业基地_GCJ02_CS.json` | ✅ | ✅ |
 | `区域地图_WS` | 四川武胜 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.0_GCJ02_Polygon/农业基地_GCJ02_WS.json` | ✅ | ✅ |
 | `区域地图_BS` | 广西百色 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.0_GCJ02_Polygon/农业基地_GCJ02_BS.json` | ✅ | ✅ |
-| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.0_GCJ02_Polygon/农业基地_GCJ02_YY.json` | ✅ | ✅（0 feature）|
+| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.0_GCJ02_Polygon/农业基地_GCJ02_YY.json` | ✅ | ✅（7 片区，2026-06-03 验收）|
 
 **FVS ↔ chart 绑定（供维护对照）：**
 
@@ -79,7 +79,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 |----|------|
 | 几何 | Polygon 未合并，同片区名多 feature，区域列表重复 |
 | 点图层 | 无独立 `-point.json`（与 v7.1 规范不同）|
-| 酉阳 | `YY.json` 为空（KML 缺失）|
+| 酉阳 | 仅 **7/16** 片区有 KML（后溪/大地/杉岭等 9 片区待补）；已可正常展示 |
 | 测试文件 | `农业基地_GCJ02_CS_test.json` 已从 GeoJSON 目录删除（2026-06-03），与本 FVS 无关 |
 
 ---
@@ -101,13 +101,13 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `区域地图_CS` | 浙江常山 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon/农业基地_GCJ02_CS-area.json` | ✅ |
 | `区域地图_WS` | 四川武胜 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon/农业基地_GCJ02_WS-area.json` | ✅ |
 | `区域地图_BS` | 广西百色 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon/农业基地_GCJ02_BS-area.json` | ✅ |
-| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon/农业基地_GCJ02_YY-area.json` | ✅（空）|
+| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon/农业基地_GCJ02_YY-area.json` | ✅（7 片区 + 7 point）|
 
 **封板后已知限制（不修复）：**
 
 | 项 | 说明 |
 |----|------|
-| 酉阳 | KML 缺失，YY-area 为空 |
+| 酉阳 | 9 个 Excel 片区尚无 KML（见 `openspec/specs/geojson.md` P1）|
 | 姜盘石 | 无 KML/坐标，不在 area 中 |
 
 ---
@@ -130,7 +130,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `区域地图_CS` | 浙江常山 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.2_GCJ02_MP_L2/农业基地/浙江常山-area.json` | ✅ |
 | `区域地图_WS` | 四川武胜 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.2_GCJ02_MP_L2/农业基地/四川武胜-area.json` | ✅ |
 | `区域地图_BS` | 广西百色 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.2_GCJ02_MP_L2/农业基地/广西百色-area.json` | ✅ |
-| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.2_GCJ02_MP_L2/农业基地/重庆酉阳-area.json` | ✅（空）|
+| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.2_GCJ02_MP_L2/农业基地/重庆酉阳-area.json` | ✅（7 片区）|
 
 **与 v7.1 geourl 差异：**
 
@@ -139,7 +139,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | v7.1 | `…/农业基地_GCJ02_CS-area.json`（扁平）|
 | v7.2 | `…/农业基地/浙江常山-area.json`（L2）|
 
-**封板后已知限制（不修复）：** 酉阳 L2 为空；无地块 L3。
+**封板后已知限制（不修复）：** 酉阳无 L3 地块层；9 个片区待 KML。
 
 ---
 
@@ -160,9 +160,9 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `区域地图_CS` | 浙江常山 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地/浙江常山-area.json` | ✅ |
 | `区域地图_WS` | 四川武胜 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地/四川武胜-area.json` | ✅ |
 | `区域地图_BS` | 广西百色 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地/广西百色-area.json` | ✅ |
-| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地/重庆酉阳-area.json` | ✅（空）|
+| `区域地图_YY` | 重庆酉阳 | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地/重庆酉阳-area.json` | ✅（7 片区）|
 
-**封板后已知限制（不修复）：** 酉阳无 KML；姜盘石等无坐标片区不在 L3。
+**封板后已知限制（不修复）：** 酉阳 9 片区无 KML；姜盘石等无坐标片区不在 L3。
 
 **geourl 修复记录：** `scripts/ops/fr_patch_v73_geourl.py`（去除 `world/`、`v3_GCJ02`、无后缀 `.json`）。
 
@@ -184,7 +184,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 |--------|--------------------------|------|
 | `区域地图` | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap/农业基地-area.json` | ✅ |
 
-**封板后已知限制（不修复）：** 与 v7.3 相同（酉阳无 KML 等）。
+**封板后已知限制（不修复）：** 与 v7.3 相同（酉阳 7/16 片区；9 片区待 KML）。
 
 **配置脚本：** `scripts/ops/fr_patch_v74_single_map.py`。
 
@@ -230,6 +230,7 @@ Agriculture_v{版本}_{坐标系}_{几何描述}.fvs
 | 2026-06-03 | v7.3 临时文件清理（`.bak`、`.DS_Store`）|
 | 2026-06-03 | v7.4 单图 FVS：`fr_patch_v74_single_map.py`（L1 geourl + 统一 `区域地图`）|
 | 2026-06-03 | **v7.4 封板**（FROZEN）：单图验收通过；生产基线升至 v7.4；封板 **12** 项 |
+| 2026-06-03 | **酉阳补全验收**：v7.0–v7.4 四图/单图切换重庆酉阳，地图与片区展示通过（7 片区；9 片区仍待 KML）|
 
 ---
 

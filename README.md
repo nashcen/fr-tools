@@ -4,7 +4,8 @@
 **本仓库：** 自原项目管理目录 **迁移** 后的迭代专用仓，仅保留日常开发所需的核心资产。
 
 **当前生产基线（封板）：** `v7.4` 单图 — `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`（组件 `区域地图`，L1 geourl）。  
-**可回退：** `v7.3` 四图、`v7.2` L2、`v7.1` L1（见 `CLAUDE.md` **12** 项 FROZEN）。
+**可回退：** `v7.3` 四图、`v7.2` L2、`v7.1` L1、`v7.0` Polygon（见 `CLAUDE.md` **12** 项 FROZEN）。  
+**验收（2026-06-03）：** v7.0–v7.4 已在 FineReport 手工验证；重庆酉阳 7 片区可正常展示（9 片区待 KML，见 `openspec/specs/geojson.md`）。
 
 ---
 

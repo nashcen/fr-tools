@@ -27,3 +27,5 @@ python3 scripts/active/geojson_generate_from_kml.py
 `WEB-INF/assets/map/geographic/农业基地-大疆测绘/{版本}/`（见 `scripts/ops/sync_sink_map_to_finereport.sh`）。
 
 v2 对账 sidecar 写在 `data/source/农业基地_v2_WGS84/`，不在 sink 下。
+
+**重庆酉阳（2026-06-03）：** 各版本含 7 个片区 MultiPolygon；v7.1 另含 `农业基地_GCJ02_YY-point.json`（7 point）。已与 FR 封板目录手工验收一致。

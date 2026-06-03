@@ -2,7 +2,8 @@
 
 > **仓库：** 自 `P2025-G-001-数智部-农业大屏一期 ★/` 迁移的精简仓，仅含 `data/`、`scripts/`、`openspec/`。FVS 与生产 GeoJSON 仍在 FineReport `WEB-INF/`。说明见根目录 `README.md`。
 
-**生产基线：** **v7.4** 单图（`Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`）— 验收通过且已封板。v7.3 四图 / v7.2 / v7.1 同为封板（可回退）。
+**生产基线：** **v7.4** 单图（`Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`）— 验收通过且已封板。v7.0–v7.3 同为封板（可回退）。  
+**酉阳（2026-06-03）：** v7.0–v7.4 五版本 FR 手工验收通过；GeoJSON 含 **7** 个酉阳片区（Excel 另 9 片区待 KML）。本仓 `data/sink/` 为生成真相源，部署用 `scripts/ops/sync_sink_map_to_finereport.sh`。
 
 ## ⛔ 封板文件保护（CRITICAL）
 
