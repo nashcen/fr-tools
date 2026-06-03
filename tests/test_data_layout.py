@@ -20,8 +20,8 @@ def test_source_excel_exists():
     assert xlsx.is_file()
 
 
-def test_sink_map_root_exists():
-    root = REPO / "data" / "sink" / "map" / "农业基地-大疆测绘"
+def test_sink_root_exists():
+    root = REPO / "data" / "sink"
     assert root.is_dir()
 
 
@@ -33,8 +33,8 @@ def test_settings_default_paths(monkeypatch):
     settings._boot.cache_clear()
     assert settings.kml_dir() == REPO / "data" / "source" / "1.农业基地KML"
     assert settings.excel_path() == REPO / "data" / "source" / "农业资产盘点明细.xlsx"
-    assert settings.data_sink_map_root() == REPO / "data" / "sink" / "map" / "农业基地-大疆测绘"
+    assert settings.data_sink_root() == REPO / "data" / "sink"
     v = "农业基地_v7.4_GCJ02_L3_SingleMap"
-    assert settings.geojson_output_dir(v) == settings.data_sink_map_root() / v
-    assert settings.geojson_wgs84_dir() == settings.data_sink_map_root() / "农业基地_v2_WGS84"
+    assert settings.geojson_output_dir(v) == REPO / "data" / "sink" / v
+    assert settings.geojson_wgs84_dir() == REPO / "data" / "source" / "农业基地_v2_WGS84"
     settings._boot.cache_clear()

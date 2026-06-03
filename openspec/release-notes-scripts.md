@@ -40,7 +40,7 @@ scripts/
 | `_shared/` | （通用）| — | — | 坐标/补丁/DB/运维 |
 | `_archive/` | `v2_WGS84` 等 | — | — | 旧 FR 兼容 |
 | `农业基地_v7.0_GCJ02_Polygon/` | 同名 | `Agriculture_v7.0_GCJ02_Polygon.fvs` | ✅ | `geojson_generate_from_kml.py` |
-| `农业基地_v7.1_GCJ02_MultiPolygon/` | 同名 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | ✅ | `geojson_fix_area_point_split.py` |
+| `农业基地_v7.1_GCJ02_MultiPolygon/` | 同名 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | ✅ | `geojson_generate_from_kml.py`（`geojson_fix_area_point_split.py` 仅补救）|
 | `农业基地_v7.2_GCJ02_MP_L2/` | 同名 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | ✅ | `geojson_generate_from_kml.py` |
 | `农业基地_v7.3_GCJ02_L3/` | 同名 | `Agriculture_v7.3_GCJ02_L3.fvs` | ✅ | `geojson_generate_from_kml.py` |
 | `农业基地_v7.4_GCJ02_L3_SingleMap/` | 同名 | `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | ✅ | `geojson_generate_from_kml.py` |
@@ -85,9 +85,12 @@ python3 scripts/versions/农业基地_v7.0_GCJ02_Polygon/geojson_generate_from_k
 
 | 项 | 值 |
 |----|-----|
-| 作用 | area/point 分离；删除无后缀 `.json` |
+| 输出 | 8 个扁平 `农业基地_GCJ02_{基地}-area.json` / `-point.json` |
+| profile | `write_l1_flat_per_base=True` |
 
 ```bash
+python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_generate_from_kml.py
+# 补救（从旧合并 json 拆分，非主路径）：
 python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_fix_area_point_split.py
 ```
 
@@ -156,3 +159,4 @@ python3 scripts/active/geojson_generate_from_kml.py
 |------|------|
 | 2026-06-03 | 建立 `scripts/versions/` 分版本快照 |
 | 2026-06-03 | v1.0 规范：`active/lib/ops/versions`；废除数字前缀；版本目录与 GeoJSON 同名 |
+| 2026-06-03 | `lib/geojson/profiles.py` 统一 v7.0–v7.4；pytest golden 五版本（47 项）|

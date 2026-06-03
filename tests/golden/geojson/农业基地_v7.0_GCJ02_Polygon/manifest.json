@@ -1,0 +1,35 @@
+{
+  "version_dir": "out",
+  "files": {
+    "农业基地_GCJ02_BS.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1734,
+      "structure_sha256": "3464ff6f10d155eb789d6cc3d05da8b0632e86b7bc0d6b92917b28138ad491b5"
+    },
+    "农业基地_GCJ02_CS.json": {
+      "feature_count": 24,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 24121,
+      "structure_sha256": "90c911325768aaba6a372529182e8c330510e230b7cd4d4c0795ef8bacd3b128"
+    },
+    "农业基地_GCJ02_WS.json": {
+      "feature_count": 37,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 80662,
+      "structure_sha256": "0a97d4ee978ab041e152c607bf210964c282e6741303429e3a06cfa987add528"
+    },
+    "农业基地_GCJ02_YY.json": {
+      "feature_count": 0,
+      "geometry_types": [],
+      "coord_points": 0,
+      "structure_sha256": "a4351b6f4488414de59b6950bee5c7e23705f2f7b71748f33e69d09d16ce3efe"
+    }
+  }
+}

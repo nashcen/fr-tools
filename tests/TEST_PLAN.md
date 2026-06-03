@@ -11,7 +11,7 @@
 
 ## 1. 测试目标
 
-1. **源数据**仅存在于 `data/source/`，生成产物写入 `data/sink/map/农业基地-大疆测绘/{版本}/`。
+1. **源数据**仅存在于 `data/source/`，生成产物写入 `data/sink/{版本}/`。
 2. 生成结果与 golden manifest 一致（结构回归）。
 3. 版本 profile、封板保护、配置外置行为不变。
 4. SDD 规范与代码一致；TDD 用例可重复执行。
@@ -23,9 +23,10 @@
 ```
 data/source/1.农业基地KML/
 data/source/农业资产盘点明细.xlsx
-data/sink/map/农业基地-大疆测绘/
+data/sink/
+  农业基地_v7.0_GCJ02_Polygon/
+  … v7.1–v7.4 …
   农业基地_v7.4_GCJ02_L3_SingleMap/   ← 默认 GEOJSON_VERSION
-  农业基地_v2_WGS84/                  ← sidecar
 ```
 
 部署：`scripts/ops/sync_sink_map_to_finereport.sh {版本}` → `WEB-INF/...`
@@ -39,10 +40,10 @@ data/sink/map/农业基地-大疆测绘/
 | 布局 | 目录存在、`settings` 默认路径 |
 | 单元 | 坐标、KML、匹配、profile |
 | 集成 | 离线生成 → tmp 或 sink |
-| 回归 | golden manifest（v7.4）|
+| 回归 | golden manifest（v7.0–v7.4，`test_all_versions.py`）|
 | 手工 | FR 同步 + FVS |
 
-**CI 准入：** `data/source` 齐全；`pytest` 使用 `GEOJSON_OUTPUT_DIR=<tmp>`，不写 sink 封板目录。
+**CI 准入：** `data/source` 齐全；`pytest` 会话级生成 v7.0–v7.4 至 `data/sink/{版本}/`（`GEOJSON_PROTECT_EXISTING=0`）。仅 `test_protect_existing` 使用临时目录。
 
 ---
 
@@ -58,7 +59,7 @@ data/sink/map/农业基地-大疆测绘/
 | TC-DATA-04 | 默认输出 = sink/{版本} | `test_data_layout.py` |
 | TC-CFG-03 | KML/Excel 指向 source | `test_settings.py` |
 | TC-GEO-01..08 | 结构回归 | `test_geojson_*.py` |
-| TC-VER-01..04 | 版本差异 | `test_version_profiles.py` |
+| TC-VER-01..10 | v7.0–v7.4 profile + golden | `test_all_versions.py`、`test_version_profiles.py` |
 | TC-FVS-* | 部署后大屏 | 手工 |
 
 ---
@@ -73,19 +74,17 @@ MYSQL_PASSWORD=test pytest tests/ -v
 GEOJSON_SKIP_DB=1 GEOJSON_PROTECT_EXISTING=0 MYSQL_PASSWORD=x \
   python3 scripts/active/geojson_generate_from_kml.py
 
-# 更新 golden（从 sink 只读）
-python3 tests/tools/build_geojson_manifest.py \
-  --source data/sink/map/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap \
-  --version 农业基地_v7.4_GCJ02_L3_SingleMap
+# 更新 golden（离线生成五版本）
+python3 tests/tools/build_all_golden_manifests.py
 ```
 
 ---
 
 ## 6. 准出
 
-- [ ] `pytest` 全绿（见 `tests/TEST_REPORT.md`）
-- [ ] v7.4 生成至 sink 与 golden 一致
-- [ ] 文档 / `.env.example` / openspec 已更新
+- [x] `pytest` 全绿（47 passed，见 `tests/TEST_REPORT.md`）
+- [x] v7.0–v7.4 golden manifest 与离线生成一致
+- [x] 文档 / `.env.example` / openspec 已更新
 
 ---
 
@@ -95,3 +94,4 @@ python3 tests/tools/build_geojson_manifest.py \
 |------|------|------|
 | 2026-06-03 | 1.0 | 初版 |
 | 2026-06-03 | 2.0 | source/sink 布局 |
+| 2026-06-03 | 2.1 | v7.0–v7.4 全版本 golden + `test_all_versions.py` |

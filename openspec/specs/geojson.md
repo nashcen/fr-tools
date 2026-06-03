@@ -15,9 +15,9 @@
       ↓ scripts/active/geojson_generate_from_kml.py
       ↓ scripts/versions/{GeoJSON目录名}/（版本入口，见 specs/scripts.md）
   GCJ-02 三层层级 + 可选 legacy 合并 json
-      → data/sink/map/农业基地-大疆测绘/{版本}/
+      → data/sink/{版本}/
   v2 对账 sidecar
-      → data/sink/map/农业基地-大疆测绘/农业基地_v2_WGS84/
+      → data/source/农业基地_v2_WGS84/   # v2 对账 sidecar（非 sink）
       ↓ ops/sync_sink_map_to_finereport.sh（部署，封板目录慎用 PROTECT_EXISTING）
   WEB-INF/assets/map/geographic/农业基地-大疆测绘/{版本}/
       ↓ FR「同步地理文件」+ FVS geourl

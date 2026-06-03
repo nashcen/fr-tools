@@ -4,7 +4,7 @@
 **最后更新：** 2026-06-03  
 **部署根路径：** `WEB-INF/assets/map/geographic/农业基地-大疆测绘/`（FineReport，不在本 Git 仓）  
 **本仓源数据：** `data/source/1.农业基地KML/`、`data/source/农业资产盘点明细.xlsx`  
-**本仓生成输出：** `data/sink/map/农业基地-大疆测绘/{版本}/`
+**本仓生成输出：** `data/sink/{版本}/`
 
 ---
 

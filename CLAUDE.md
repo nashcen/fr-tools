@@ -82,5 +82,5 @@ v6 / v7.0 封板仍用旧式 `农业基地_GCJ02_{基地}.json`；**v7.1–v7.4 
 | 脚本版本快照 | `scripts/versions/{GeoJSON目录名}/` |
 | KML 源文件 | `data/source/1.农业基地KML/` |
 | 盘点 Excel | `data/source/农业资产盘点明细.xlsx` |
-| GeoJSON 生成输出 | `data/sink/map/农业基地-大疆测绘/{版本}/` |
+| GeoJSON 生成输出 | `data/sink/{版本}/` |
 | FR 部署（同步） | FineReport `WEB-INF/assets/map/geographic/农业基地-大疆测绘/` |

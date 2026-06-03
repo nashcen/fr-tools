@@ -49,12 +49,18 @@ def data_source_dir() -> Path:
     return repo_root() / "data" / "source"
 
 
-def data_sink_map_root() -> Path:
+def data_sink_root() -> Path:
+    """生成 GeoJSON 根：默认 data/sink/（其下直接为各版本目录）。"""
     _boot()
-    raw = os.environ.get("DATA_SINK_MAP_ROOT")
+    raw = os.environ.get("DATA_SINK_ROOT") or os.environ.get("DATA_SINK_MAP_ROOT")
     if raw:
         return Path(raw).expanduser().resolve()
-    return repo_root() / "data" / "sink" / "map" / MAP_COLLECTION_NAME
+    return repo_root() / "data" / "sink"
+
+
+def data_sink_map_root() -> Path:
+    """兼容旧名；与 data_sink_root() 相同。"""
+    return data_sink_root()
 
 
 def kml_dir() -> Path:
@@ -98,7 +104,7 @@ def geojson_wgs84_dir() -> Path:
     raw = os.environ.get("GEOJSON_WGS84_DIR")
     if raw:
         return Path(raw).expanduser().resolve()
-    return data_sink_map_root() / "农业基地_v2_WGS84"
+    return data_source_dir() / "农业基地_v2_WGS84"
 
 
 def geojson_version_name() -> str:
@@ -107,13 +113,13 @@ def geojson_version_name() -> str:
 
 
 def geojson_output_dir(version: str | None = None) -> Path:
-    """生成输出目录：默认 data/sink/map/农业基地-大疆测绘/{版本}。"""
+    """生成输出目录：默认 data/sink/{版本}。"""
     _boot()
     override = os.environ.get("GEOJSON_OUTPUT_DIR")
     if override:
         return Path(override).expanduser().resolve()
     name = version or geojson_version_name()
-    return data_sink_map_root() / name
+    return data_sink_root() / name
 
 
 def skip_db() -> bool:
@@ -163,4 +169,4 @@ def mysql_config() -> dict[str, str | int]:
 
 # 兼容旧代码引用
 def geojson_map_root() -> Path:
-    return data_sink_map_root()
+    return data_sink_root()

@@ -1,0 +1,1135 @@
+{
+  "version_dir": "out",
+  "files": {
+    "农业基地/四川武胜/三溪东区-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 1341,
+      "structure_sha256": "275060afade46106b550cc568347e3e234c44474bcf9e85dc79635c673910abf"
+    },
+    "农业基地/四川武胜/三溪东区-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "77d64ab0693b8d0ff42126c97a927ef95fd8de94b170b3ee3c6af4373efd2126"
+    },
+    "农业基地/四川武胜/三溪北区-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 841,
+      "structure_sha256": "01c2c73389a5e62481ade192f7a390def1c51e97b186d0fdec3363296ef38c60"
+    },
+    "农业基地/四川武胜/三溪北区-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "fd6c1485355c9d28aa5553784585ca686e560b79e71607edf4e6088355fba14e"
+    },
+    "农业基地/四川武胜/三溪南区-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1462,
+      "structure_sha256": "694937f32e71831c9899f3101d1419a08703b75980fcba07b2b70c51a07684bb"
+    },
+    "农业基地/四川武胜/三溪南区-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "a3baac29d4b218013c881b7544a5128cbcc15a5398c6faa91e9e614f59c35810"
+    },
+    "农业基地/四川武胜/三溪苗圃-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 27,
+      "structure_sha256": "ea15978917e4ba647cc167f36d6b97f62c0fa8fa3da3d4ab8ae69c5b69595c97"
+    },
+    "农业基地/四川武胜/三溪苗圃-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "1c48ae1ebb1a79befbecc9ff6b2db694d157075c81284d7a4adacc34e7ef7cc3"
+    },
+    "农业基地/四川武胜/三溪西区-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1671,
+      "structure_sha256": "60a51978f3b5c23bc33b4864534178be3504734bff662061871479dd7daf419e"
+    },
+    "农业基地/四川武胜/三溪西区-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "c781fca8b596f2270182fc020da5f16f20bc2ab248e7fd573d953b487c3b6dff"
+    },
+    "农业基地/四川武胜/九湾-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 4455,
+      "structure_sha256": "b64b521cc8f37683919968bef7fb83410b54beb72a2277b1bc4b20b380a8d20d"
+    },
+    "农业基地/四川武胜/九湾-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "7391c8f7c16336d62459ed6e0e9ace722083e30f2e4f769b5bbae4ac3633491c"
+    },
+    "农业基地/四川武胜/会云-area.json": {
+      "feature_count": 3,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1365,
+      "structure_sha256": "ae23fb17fe3ce5d659acc2445f39ff93419173d28d67e5f0aa50b05a65ff7630"
+    },
+    "农业基地/四川武胜/会云-point.json": {
+      "feature_count": 3,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 3,
+      "structure_sha256": "7a8837e49b25f0008b9a3cb41ba8ad0149fc4d1b1649cde828f9a1a66864ec54"
+    },
+    "农业基地/四川武胜/华家坪-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3969,
+      "structure_sha256": "c5d9bcbfce354ed2c714c462d11b13255114291cba72fb4acf041e0b3828655c"
+    },
+    "农业基地/四川武胜/华家坪-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "475f96180a5b94f58054ef2782ff5412ff5ec3feb9ec763f540ad4489cebaba6"
+    },
+    "农业基地/四川武胜/吊井龙-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1561,
+      "structure_sha256": "0464260bc18da37b60acd19713d357281e0ca4839a291b5330e1c2b0a580e7af"
+    },
+    "农业基地/四川武胜/吊井龙-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "b2a6fb19407b913a38e599ae45623bb6e0e7db16c8c96dab10aec2d50740c646"
+    },
+    "农业基地/四川武胜/响水滩-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 583,
+      "structure_sha256": "3a8dd49270f2efe1c92929c1aaa4d987ea0a3363bc4767508ddf0339b6c67a27"
+    },
+    "农业基地/四川武胜/响水滩-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "a1ac5ded42d2e2366c02fcd2dafae1fe9c47660d9de2a292f194d9296f724793"
+    },
+    "农业基地/四川武胜/嘉乐-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 5284,
+      "structure_sha256": "852627b6769ec599e4d6a13af242d4bfa585656df15eaf5a3544415f11dd5e0a"
+    },
+    "农业基地/四川武胜/嘉乐-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "7e87b196221a9a6f1ef21e5ecf3b9cc2f80c6d056ca0268d15e916197797b039"
+    },
+    "农业基地/四川武胜/天星桥-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3131,
+      "structure_sha256": "bb58f70ab531d1dce392d163ec2bbbd09c2a07d9e5b4a9eb62cb9e92e0328f6a"
+    },
+    "农业基地/四川武胜/天星桥-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "52f45207a4f7bc198311b170953455eae7879914a1bb311764246fdfabc6062e"
+    },
+    "农业基地/四川武胜/小寨-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2042,
+      "structure_sha256": "79090cb74dc3753596f9dac5488806371e34b3304e52c194cf13fdbc8c9c14a1"
+    },
+    "农业基地/四川武胜/小寨-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "d8d554d335dd3d938aed1b335ccace4fb6e5023f4f819b0d29ac1bf9f429bc7e"
+    },
+    "农业基地/四川武胜/尼姑庵-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2944,
+      "structure_sha256": "12b0b97ed1e6269ea9dec90326120f37e121f9484b76d72b9c4f4aa4c1db230c"
+    },
+    "农业基地/四川武胜/尼姑庵-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "7dd6906600e8fd4609e836bcdd75e8f993069d392f49db9f420062143f81be83"
+    },
+    "农业基地/四川武胜/干家湾宝箴塞-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2407,
+      "structure_sha256": "c66df4185a47fd810477ecfe6478a990d1517e8511926ca22570d5b3f351b809"
+    },
+    "农业基地/四川武胜/干家湾宝箴塞-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "e662cdb912e6176cf94aa9b0efdd422a95cb178107d5df38c6b76d1be2cd47bf"
+    },
+    "农业基地/四川武胜/幸福-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2095,
+      "structure_sha256": "54e6adf09354930a51f2fadacea80b04571fa1150d24e14dc0af3d44d36c1898"
+    },
+    "农业基地/四川武胜/幸福-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "aea5682784b4fb5c0624a160d388e417e6414cbf4f9fcd5e1560634bfaab626b"
+    },
+    "农业基地/四川武胜/应家沟-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 4677,
+      "structure_sha256": "306c124f3a0595e647cf9e85bf32671f38326e4baa97666b61758bf7c34573d4"
+    },
+    "农业基地/四川武胜/应家沟-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "6fd35f3c2677895b6d611be1c5d3a78a9cd4b25b20da4ca5f389647c41940782"
+    },
+    "农业基地/四川武胜/方沟-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 746,
+      "structure_sha256": "00d045374ff238a7e1f4c9fcb17c5df0328a83454d07f96bc3632eef933afd5c"
+    },
+    "农业基地/四川武胜/方沟-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "1f6d223b6275649a019b86b6a8ade43e9f16bcfd37e21e7b0a7704560a7a3d01"
+    },
+    "农业基地/四川武胜/望乡坪-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 496,
+      "structure_sha256": "2045e81667822127241292a72db8035b03d2bce4f198437fd0fe6a5bc0049c09"
+    },
+    "农业基地/四川武胜/望乡坪-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "f7d6e7be9ffa950ad98f9770e64567d4e94b2af3823957329fdd1bf5dc99b46c"
+    },
+    "农业基地/四川武胜/李子坑-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2519,
+      "structure_sha256": "1934bfbaa46f6e006975ee46eb1dd77eb5be6ffb60a49188a28a4f0d5db23afe"
+    },
+    "农业基地/四川武胜/李子坑-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "e8b2f02281c1086d2bb42db0ab1c7913e0105c106fbb4b37add50ef3cffe3ceb"
+    },
+    "农业基地/四川武胜/桂花湾-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1389,
+      "structure_sha256": "3ccc43780e0a3385e183552b3df0d7806bd59b8c9a71321611b2f350ace04885"
+    },
+    "农业基地/四川武胜/桂花湾-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "3d1952fc969dd505fa98595af1e44c4213ca7cf0e33e999aa0d71ee6a99b5ba2"
+    },
+    "农业基地/四川武胜/桥亭1-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3156,
+      "structure_sha256": "bba4464609f7531185147950fc9920b90c76933100a177181bf9edb4236935ab"
+    },
+    "农业基地/四川武胜/桥亭1-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "961222626ff2e5720dde47643b94e2ab59d0bb1cd3a158936e29e978605d9a3b"
+    },
+    "农业基地/四川武胜/桥亭2-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 4168,
+      "structure_sha256": "1884d5d3c9dbcd9c89d58c5455510c0224600665c6bcce1604f926cbd04da9ec"
+    },
+    "农业基地/四川武胜/桥亭2-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "961222626ff2e5720dde47643b94e2ab59d0bb1cd3a158936e29e978605d9a3b"
+    },
+    "农业基地/四川武胜/沙溪-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1123,
+      "structure_sha256": "9cfe4fc75de29089af65a29c6200e582b0c7fb1babd52a13f336858247d07d69"
+    },
+    "农业基地/四川武胜/沙溪-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "60ab7324eee24b0bc0daec6bd5a5d2b22db49e46f6cba63ebfed83556d2c109d"
+    },
+    "农业基地/四川武胜/白果-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2739,
+      "structure_sha256": "3d3a4c324eeed531439e0e3332f87474bbbed999c8393a281a57e807cdf69a30"
+    },
+    "农业基地/四川武胜/白果-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "34b414e0b4c69e32a31390481a57f082d9558fd50a2523a20de6af30f8a0f2b3"
+    },
+    "农业基地/四川武胜/穿岩-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2847,
+      "structure_sha256": "bc0f48fa44edfff57d2ed50926d5ab823b56dd4622f40fa12ca245bec28f96de"
+    },
+    "农业基地/四川武胜/穿岩-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "2ac80a1deb4540444c91f588a49f5133acdafc5fd9e28ba730addbf0efd24899"
+    },
+    "农业基地/四川武胜/花墙-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1035,
+      "structure_sha256": "af1817e44a92dcf05f7eddb3f933b99c47e3df2a03a691ed1545b055115eb8c5"
+    },
+    "农业基地/四川武胜/花墙-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "63c91eaa697e561d5420ecd12f55a5752cfe22fc5b64377420b6282864af1cf0"
+    },
+    "农业基地/四川武胜/观音塘-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3075,
+      "structure_sha256": "3f8b53f4bda3761f0c34a64f00671ecaf084697b4ee96d818f7abdc2604e6481"
+    },
+    "农业基地/四川武胜/观音塘-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "aa55b48dfcb264b392018e6df1628a6001c02d1ec317cd6c8dc727adbad71900"
+    },
+    "农业基地/四川武胜/象鼻-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1483,
+      "structure_sha256": "14249235fdd4fdafee1dc044724a9bbe84866dd3e70ce26de4a1edc3ce1a8147"
+    },
+    "农业基地/四川武胜/象鼻-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "7f14924ecd4a83d23d352e1fea26c8c7d0ecbb22efb99a37067366d08a353b53"
+    },
+    "农业基地/四川武胜/金狮-area.json": {
+      "feature_count": 18,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 2124,
+      "structure_sha256": "739f89b8ef1ae0c2515b54c359bac8f4615b984046ff0a3a7c7b6e8967329310"
+    },
+    "农业基地/四川武胜/金狮-point.json": {
+      "feature_count": 18,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 18,
+      "structure_sha256": "6aa10e4ff7d66e625b3ebab4eaa210fb03cee2b8f9913a242a501871c682df5c"
+    },
+    "农业基地/四川武胜/陈家寨1-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1242,
+      "structure_sha256": "d56a5a5a9d056caf63f822cd4c6fe30f124036b514792bdce2c5134e3d484031"
+    },
+    "农业基地/四川武胜/陈家寨1-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "e4da9742ef80c14a24436bf612ff749eb32e047b188385918239155752819066"
+    },
+    "农业基地/四川武胜/陈家寨2-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1671,
+      "structure_sha256": "6df7ab84df22b0df05a1f3789b973e5e814006f4da612c7141946a2e7abe4e1b"
+    },
+    "农业基地/四川武胜/陈家寨2-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "8b2707fca151a43164611e8fe82a58a09172e353256c4f16dbec63b7ac678537"
+    },
+    "农业基地/四川武胜/飞龙1-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3101,
+      "structure_sha256": "6425ca0af74e206273307da307f9d633d872f2297f5d5f210d7eccd46c5bc801"
+    },
+    "农业基地/四川武胜/飞龙1-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "3b09d422d5249b568934b94d97cdd1906580bcce946ccb0d2959155a345fed61"
+    },
+    "农业基地/四川武胜/飞龙2-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 2902,
+      "structure_sha256": "ee60e08f0e0a68392d4f1e58640fe04d72214194d2d8b88f593a6ba505fa0ad9"
+    },
+    "农业基地/四川武胜/飞龙2-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "be277c924ef437f370052dd3ea3900020a9bd765f9e7c1a2b547c4a69e5b5137"
+    },
+    "农业基地/四川武胜/飞龙3-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1783,
+      "structure_sha256": "ca3397698ee778dd293a5b72b84c55d48d9babbc01ce02d3cecc017ccaadd6c9"
+    },
+    "农业基地/四川武胜/飞龙3-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "1be7c83b545665355d684e7029105078c269249a3b778d55ebac0902e63ee359"
+    },
+    "农业基地/四川武胜/龙兴-area.json": {
+      "feature_count": 12,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 1962,
+      "structure_sha256": "764fb5ab7403de23273e04fd8210cb591854bc453dbf432839d3558528d6e2f4"
+    },
+    "农业基地/四川武胜/龙兴-point.json": {
+      "feature_count": 12,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 12,
+      "structure_sha256": "fcccaf24ea9e1d26c2feda2627700da575bf448be747da4b7135e6080144a8c4"
+    },
+    "农业基地/四川武胜/龙头沟-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1451,
+      "structure_sha256": "930d3e843934dcb7079734c953650869cdefcacb4b23527dee149b02f65c49ac"
+    },
+    "农业基地/四川武胜/龙头沟-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "7099a9cc563c7893e7773c151a0fb3dc18a67147997f44a3ec6a69b4abf11834"
+    },
+    "农业基地/四川武胜-area.json": {
+      "feature_count": 37,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 80662,
+      "structure_sha256": "521d92fba00eb05a6a7e915f77a6fb5da7112b3e7c64bc92fb4cf45532f2736b"
+    },
+    "农业基地/四川武胜-point.json": {
+      "feature_count": 37,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 37,
+      "structure_sha256": "2d0e8e06704feda09a53e23de28be66efec259998a4346919281c3be6b0a7f90"
+    },
+    "农业基地/广西百色/平林-area.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 1359,
+      "structure_sha256": "c1790105c114af73c324119d8c56a9ec7de41e7e068d377249d846ae94d20809"
+    },
+    "农业基地/广西百色/平林-point.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 9,
+      "structure_sha256": "c671b280c7e666d483b139fa5a22a753acdcfb9332058ae4ecf6d7c5087dd22e"
+    },
+    "农业基地/广西百色/龙细-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 375,
+      "structure_sha256": "9afc8457703a7aaa11e8137a4db816bddfaea0ebd50ffb2ef3f20f688674d3fc"
+    },
+    "农业基地/广西百色/龙细-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "38ebb78a42103fade25cd54517a5862e10aeefd7b1d3f3e7f1a03792188a5617"
+    },
+    "农业基地/广西百色-area.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1734,
+      "structure_sha256": "73998148b4084210f1ff8f31da14c3496532fe674ad096c02837e76db91a8f73"
+    },
+    "农业基地/广西百色-point.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 2,
+      "structure_sha256": "c462ed6459667bc9f827463898561bf5706e82bcd1395a45e1874dc27bb65c27"
+    },
+    "农业基地/浙江常山/东乡-area.json": {
+      "feature_count": 4,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 623,
+      "structure_sha256": "9441c6f72cfad98f8e914ae35c1ae67ed686f1eef0db297f08607c5be901a0eb"
+    },
+    "农业基地/浙江常山/东乡-point.json": {
+      "feature_count": 4,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 4,
+      "structure_sha256": "43c569a03a8d6737fc020421631d921e7e270161e8835d196bd2fc8fef7456d9"
+    },
+    "农业基地/浙江常山/五联-area.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 297,
+      "structure_sha256": "8527d686f0107a98eee35d3c384d0d79c12be1e823012e4d30aaa46b3a4c251b"
+    },
+    "农业基地/浙江常山/五联-point.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 2,
+      "structure_sha256": "e3e3d709607768d4946427f48a8ecdfdd8439f766fd4f79bc908e6dde9edbad7"
+    },
+    "农业基地/浙江常山/十五里-area.json": {
+      "feature_count": 6,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1269,
+      "structure_sha256": "8c1acc6170feba61941a442a3ba84b0f23eae80ca954a125272e13d2a38646f3"
+    },
+    "农业基地/浙江常山/十五里-point.json": {
+      "feature_count": 6,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 6,
+      "structure_sha256": "36845f7c24a947b6237291168dbe7ff9e7ddf4bb578dadda20d65b217ace189e"
+    },
+    "农业基地/浙江常山/双溪口1-area.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 884,
+      "structure_sha256": "46b821dc66c2678485a46299afb063ebbbc176baa24b1ad0e19c40d34c29cf7f"
+    },
+    "农业基地/浙江常山/双溪口1-point.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 5,
+      "structure_sha256": "9f12c6905dd5745d79ac575b408e8dbf2008338a5aff51adc750cce8d3f9d137"
+    },
+    "农业基地/浙江常山/双溪口2-area.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1266,
+      "structure_sha256": "daaa4b9eed164e243c35b225ac43520be0def6810d4a8379f1ebfa004b6118a8"
+    },
+    "农业基地/浙江常山/双溪口2-point.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 5,
+      "structure_sha256": "2288419ed77878480f8e949bab625665ff9e66202ad7b6553d1de1c29165bcea"
+    },
+    "农业基地/浙江常山/同弓示范基地-area.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 416,
+      "structure_sha256": "def02760c0c96b9747c472ace8caa845ce351cbb144394780673e33e9ba2ed4e"
+    },
+    "农业基地/浙江常山/同弓示范基地-point.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 5,
+      "structure_sha256": "05e18d0b9e872f9ad4fd4238b326c37fb5a220fa7d6a70af8ac372b64efe8875"
+    },
+    "农业基地/浙江常山/同弓苗地-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 59,
+      "structure_sha256": "5b284e9bbe3c733d168c683708d22d4e734e309abe32e8c8f7a5fdec6d3c7417"
+    },
+    "农业基地/浙江常山/同弓苗地-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "199eb3c634a29b9a195033af4c2bdeff1264578a23da9792968bc7a0a007d321"
+    },
+    "农业基地/浙江常山/同弓高换基地-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 145,
+      "structure_sha256": "124778d7a1f83f7a8d304025da9fe0fbbb1a74eb21578e1587122ac3921891b9"
+    },
+    "农业基地/浙江常山/同弓高换基地-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "f00d482a4faedbcc0dbe70b227374805ea3e9f9473aefef92c2e6e3c37bcf33a"
+    },
+    "农业基地/浙江常山/和平-area.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1567,
+      "structure_sha256": "e524478a41a5d5a9a682ba83ad5804dac88f6862989e1e077c9365a5bf098339"
+    },
+    "农业基地/浙江常山/和平-point.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 8,
+      "structure_sha256": "ffd7d21951f73c3850734c0e87a2d481045823ea846cc8b6664e3da3d8af2a22"
+    },
+    "农业基地/浙江常山/大埂-area.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1658,
+      "structure_sha256": "b8e8224bf0cfd87f5ca13fac45a466f69d1ef48902beb0d3980e54acd6e1aae1"
+    },
+    "农业基地/浙江常山/大埂-point.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 9,
+      "structure_sha256": "c18b59b3775fc7216d46dd69013a40e8414847f1116f0d5f92f8272468b4e13f"
+    },
+    "农业基地/浙江常山/天安-area.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1742,
+      "structure_sha256": "ee356c2b1d47a7a53cf6b89129590aabcf2e254d4704017ae7c7e40118aa5896"
+    },
+    "农业基地/浙江常山/天安-point.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 8,
+      "structure_sha256": "607d6c7cf091720c44aa3dc1745d2d2b4de79fc4376ccf5d34e292f1d05bb4ce"
+    },
+    "农业基地/浙江常山/开向岭-area.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1455,
+      "structure_sha256": "d233ed9c9a9417d8f1b545ca8d00c8f6bb4c56556c4daedc7b7db202af3731ba"
+    },
+    "农业基地/浙江常山/开向岭-point.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 5,
+      "structure_sha256": "a620cd5f630028c3108ae797d9e83cb93a87d4edd5951354650b8fbc4da577c4"
+    },
+    "农业基地/浙江常山/彭川-area.json": {
+      "feature_count": 6,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1404,
+      "structure_sha256": "c04191abeb4978aabafcea1e7b5cdd0d629b766d020e3ed8009714a5b636c9da"
+    },
+    "农业基地/浙江常山/彭川-point.json": {
+      "feature_count": 6,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 6,
+      "structure_sha256": "abbf958d1fe32f81cc9224e64fa0073a6f0ff2cf45ef5f8d302e5cabc492467d"
+    },
+    "农业基地/浙江常山/新塘岭-area.json": {
+      "feature_count": 14,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1894,
+      "structure_sha256": "c81fe0bb0fd699aef9bc903f3abfd1a165be308bbefb9050249577cb5acf147b"
+    },
+    "农业基地/浙江常山/新塘岭-point.json": {
+      "feature_count": 14,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 14,
+      "structure_sha256": "6659beba91635ea3590aaf6c9fd2300dbb13741f586278fc92881ac4e299e91a"
+    },
+    "农业基地/浙江常山/景区-area.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1184,
+      "structure_sha256": "edd4cf43cf7227916d9fff82c348713b8344c9d3558e334f1b78144e69f8cfd2"
+    },
+    "农业基地/浙江常山/景区-point.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 9,
+      "structure_sha256": "923be7e0f5643dd2d348a7c433b0621c4855c277f3054746c9c1b6959d3db535"
+    },
+    "农业基地/浙江常山/曹会关-area.json": {
+      "feature_count": 16,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1121,
+      "structure_sha256": "7e6e4535a1df69514ee490175287cb9e81f69d4b2977b2538ae620f3a12a93a0"
+    },
+    "农业基地/浙江常山/曹会关-point.json": {
+      "feature_count": 16,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 16,
+      "structure_sha256": "699c80aa6af7ef9d5ec755fb1bb824a081049984ded01a05a614f300a2905471"
+    },
+    "农业基地/浙江常山/狮东-area.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1382,
+      "structure_sha256": "7ee670571bb01fab9904d4dfa930d0bf1c5c4961145db67caa391442cd180955"
+    },
+    "农业基地/浙江常山/狮东-point.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 9,
+      "structure_sha256": "0d3959a607bdab8dbf33085fc8a5768e99db0fd2f4d2fa37aa81346c7836e4a8"
+    },
+    "农业基地/浙江常山/石坝-area.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 915,
+      "structure_sha256": "6bf03b547c68fd70632d2f0dd04203b3a843e48c9220643b62e1f1cdb016b4b2"
+    },
+    "农业基地/浙江常山/石坝-point.json": {
+      "feature_count": 8,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 8,
+      "structure_sha256": "c48acaf35e1cd1d27e0ba649d1a2a19f16cb389be7424966d48d05eb5c0b5702"
+    },
+    "农业基地/浙江常山/祠堂坑-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 23,
+      "structure_sha256": "ab6b17d0b85d386df25d1fe7c8f9afe778eff71ab8bc25e8cb48a860245f5513"
+    },
+    "农业基地/浙江常山/祠堂坑-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "425dbf85f609356378bcd6135499b9e0e67a03b3e32d8285e68a1f909fb2b489"
+    },
+    "农业基地/浙江常山/羊坳水库-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 21,
+      "structure_sha256": "3112696da5dfe1bf988b7005bf81f014e81d7a9ea258d8eb5e7cfc104320e8a8"
+    },
+    "农业基地/浙江常山/羊坳水库-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "47d33a71f400c13b4204e5250ae2c235df89e2d59b4136f31661dfa7248e4e24"
+    },
+    "农业基地/浙江常山/育苗中心-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 91,
+      "structure_sha256": "7711e06deefea0b9d375919b80ab8e0e284f1d2e9903a03c28ffdf5c39cd3950"
+    },
+    "农业基地/浙江常山/育苗中心-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "1defe9277181b4e75394dd0856ba734204b8bc7516908345b6bbad90e1596641"
+    },
+    "农业基地/浙江常山/草坪-area.json": {
+      "feature_count": 43,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 3642,
+      "structure_sha256": "719741b78e19b78b804ea262f6b247bcea78d1846fc38f4f5ebf117cb5de4f3a"
+    },
+    "农业基地/浙江常山/草坪-point.json": {
+      "feature_count": 43,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 43,
+      "structure_sha256": "a684ba2b1348eaf81a1fded2df4e460997bedf4a9d4f32b97f2d327a7bd86763"
+    },
+    "农业基地/浙江常山/路里坑-area.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 938,
+      "structure_sha256": "b528e7abdd918ce36624f23109113e3c036afc747f28ff29eb26350de5bd0087"
+    },
+    "农业基地/浙江常山/路里坑-point.json": {
+      "feature_count": 5,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 5,
+      "structure_sha256": "2c5bc7eacc5c15f8fdb9bad0f633e83fccc51e4e68cac2c2d41d5ca1a13602b7"
+    },
+    "农业基地/浙江常山/金川-area.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 1204,
+      "structure_sha256": "153df863ae9f9402c1151575090aa8a1b561fd589c0dbfe067acb6ccf1e2973d"
+    },
+    "农业基地/浙江常山/金川-point.json": {
+      "feature_count": 9,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 9,
+      "structure_sha256": "1c73b6354f371a7eb529078d85334923590860826318dc252160ada8d5c76b62"
+    },
+    "农业基地/浙江常山-area.json": {
+      "feature_count": 24,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 24121,
+      "structure_sha256": "6b1c6b431f8b58627a07dee0ca47e757451a21c44cac74d8bc11bc5e9a5fa95e"
+    },
+    "农业基地/浙江常山-point.json": {
+      "feature_count": 24,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 24,
+      "structure_sha256": "57bb59e60f38e84b666c8cb0545bfa2066354e1ae4c4b26a43b6d1d8fbb8f7c3"
+    },
+    "农业基地/重庆酉阳-area.json": {
+      "feature_count": 0,
+      "geometry_types": [],
+      "coord_points": 0,
+      "structure_sha256": "d00ae72a6f45070ba7f94f27716bc9b9effbec8cf34b875cab28fd251261c3e1"
+    },
+    "农业基地/重庆酉阳-point.json": {
+      "feature_count": 0,
+      "geometry_types": [],
+      "coord_points": 0,
+      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
+    },
+    "农业基地-area.json": {
+      "feature_count": 3,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 106229,
+      "structure_sha256": "26743515e63e8b928da4403d95004571b6d950d375f83fb407d6c2f6fdb49794"
+    },
+    "农业基地-point.json": {
+      "feature_count": 3,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 3,
+      "structure_sha256": "36718b1a2b8138b3a74b04214884f0c8d66e17054ac4acbe74a9dd6dd6c2da8e"
+    },
+    "农业基地_GCJ02_BS.json": {
+      "feature_count": 2,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 1734,
+      "structure_sha256": "3464ff6f10d155eb789d6cc3d05da8b0632e86b7bc0d6b92917b28138ad491b5"
+    },
+    "农业基地_GCJ02_CS.json": {
+      "feature_count": 24,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 24121,
+      "structure_sha256": "90c911325768aaba6a372529182e8c330510e230b7cd4d4c0795ef8bacd3b128"
+    },
+    "农业基地_GCJ02_WS.json": {
+      "feature_count": 37,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 80662,
+      "structure_sha256": "0a97d4ee978ab041e152c607bf210964c282e6741303429e3a06cfa987add528"
+    },
+    "农业基地_GCJ02_YY.json": {
+      "feature_count": 0,
+      "geometry_types": [],
+      "coord_points": 0,
+      "structure_sha256": "a4351b6f4488414de59b6950bee5c7e23705f2f7b71748f33e69d09d16ce3efe"
+    }
+  }
+}

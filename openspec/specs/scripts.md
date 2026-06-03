@@ -89,7 +89,7 @@ fr_{动作}.sh
 | 变量 | 含义 |
 |------|------|
 | `DATA_SOURCE_DIR` | 原始数据根（默认 `data/source`）|
-| `DATA_SINK_MAP_ROOT` | 生成 GeoJSON 根（默认 `data/sink/map/农业基地-大疆测绘`）|
+| `DATA_SINK_ROOT` | 生成 GeoJSON 根（默认 `data/sink`，五版本目录在其下）|
 | `GEOJSON_VERSION` | sink 下版本子目录名 |
 | `GEOJSON_OUTPUT_DIR` | 可选覆盖单次输出（测试用）|
 | `GEOJSON_PROTECT_EXISTING` | 不覆盖已有 `.json` |

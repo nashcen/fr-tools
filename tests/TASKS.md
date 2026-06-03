@@ -21,9 +21,9 @@
 
 ## Phase D — 回归与报告
 
-- [x] D1 `pytest tests/ -v` 全绿（27 passed）
-- [x] D2 离线生成 v7.4 至 sink
-- [x] D3 golden manifest 与 sink 输出一致（136 文件）
+- [x] D1 `pytest tests/ -v` 全绿（48 passed；写入 sink 五版本目录）
+- [x] D2 `build_all_golden_manifests.py` 生成五版本 golden
+- [x] D3 `test_all_versions.py` 参数化 manifest 回归
 - [x] D4 填写 `TEST_REPORT.md`
 - [ ] D5 手工：sync FR + FVS 抽检（可选）
 
@@ -31,6 +31,6 @@
 
 | 角色 | 项 | 状态 |
 |------|-----|------|
-| 开发 | 代码 + 自动化 | 待 D1 |
-| 测试 | TEST_REPORT | 待 D4 |
+| 开发 | 代码 + 自动化 | 完成 |
+| 测试 | TEST_REPORT | 完成 |
 | 产品 | FVS TC-FVS-* | 待手工 |

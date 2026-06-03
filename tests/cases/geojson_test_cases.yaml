@@ -1,7 +1,7 @@
 # 农业基地 GeoJSON — 测试用例（v2 source/sink）
 meta:
   project: fr-tools
-  layout: data/source + data/sink/map/农业基地-大疆测绘
+  layout: data/source + data/sink（五版本目录）
   baseline_version: 农业基地_v7.4_GCJ02_L3_SingleMap
   updated: "2026-06-03"
 
@@ -26,8 +26,8 @@ cases:
     priority: P0
     type: automated
     expected:
-      path: data/sink/map/农业基地-大疆测绘
-    automated_by: tests/test_data_layout.py::test_sink_map_root_exists
+      path: data/sink
+    automated_by: tests/test_data_layout.py::test_sink_root_exists
 
   - id: TC-DATA-04
     title: 默认生成路径为 sink 下版本子目录

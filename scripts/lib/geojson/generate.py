@@ -293,6 +293,30 @@ def generate(profile: GeojsonVersionProfile) -> None:
 
     point_features = _load_point_features(all_centroids)
 
+    if profile.write_l1_flat_per_base:
+        print("\n步骤 5.1: 写出 v7.1 扁平 L1（*-area.json / *-point.json）...")
+        for base, sfx in BASE_SUFFIX.items():
+            stem = f"农业基地_GCJ02_{sfx}"
+            feats_area = [
+                writer.v3_area_feature(f)
+                for f in area_features
+                if f["properties"]["基地名称"] == base
+            ]
+            feats_point = [
+                writer.v3_point_feature(f)
+                for f in point_features
+                if f["properties"]["基地名称"] == base
+            ]
+            writer.write_geojson(
+                gcj02_dir / f"{stem}-area.json",
+                feats_area,
+                top_name=base,
+            )
+            writer.write_geojson(
+                gcj02_dir / f"{stem}-point.json",
+                [x for x in feats_point if x],
+            )
+
     if profile.write_legacy_merged:
         for base, sfx in BASE_SUFFIX.items():
             feats_area = [

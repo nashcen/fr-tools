@@ -10,7 +10,7 @@
 | 变量 | 含义 |
 |------|------|
 | `DATA_SOURCE_DIR` | 原始数据（默认 `data/source`）|
-| `DATA_SINK_MAP_ROOT` | 生成根（默认 `data/sink/map/农业基地-大疆测绘`）|
+| `DATA_SINK_ROOT` | 生成根（默认 `data/sink`，其下为五版本目录）|
 | `GEOJSON_VERSION` | sink 下版本子目录名 |
 | `GEOJSON_OUTPUT_DIR` | 可选覆盖（pytest 临时目录）|
 | `GEOJSON_PROTECT_EXISTING` | `1` 不覆盖已有 `.json` |
@@ -29,7 +29,7 @@
 ## 常用命令
 
 ```bash
-# 生成 → data/sink/map/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap/
+# 生成 → data/sink/农业基地_v7.4_GCJ02_L3_SingleMap/
 python3 scripts/active/geojson_generate_from_kml.py
 
 # 同步至 FineReport

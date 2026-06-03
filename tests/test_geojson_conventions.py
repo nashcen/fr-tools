@@ -7,8 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from tests.conftest import VERSION
-from tests.test_geojson_generate import _run_generate
+from tests.conftest import DEFAULT_VERSION as VERSION, sink_version_dir
 
 ALLOWED_AREA_TYPES = {"Polygon", "MultiPolygon"}
 ALLOWED_POINT_TYPES = {"Point", None}
@@ -20,21 +19,8 @@ def _load_fc(path: Path) -> dict:
 
 
 @pytest.fixture(scope="module")
-def generated_tree(tmp_path_factory):
-    out = tmp_path_factory.mktemp("geo_conv") / "generated"
-    out.mkdir()
-    import os
-
-    os.environ["FR_TOOLS_REPO"] = str(Path(__file__).resolve().parents[1])
-    os.environ["GEOJSON_VERSION"] = VERSION
-    os.environ["GEOJSON_OUTPUT_DIR"] = str(out)
-    os.environ["GEOJSON_SKIP_DB"] = "1"
-    os.environ["GEOJSON_SKIP_DB_UPDATE"] = "1"
-    os.environ["GEOJSON_PROTECT_EXISTING"] = "0"
-    os.environ["MYSQL_PASSWORD"] = "test"
-    os.environ["GEOJSON_WGS84_SUBDIR"] = str(out.parent / "wgs84")
-    _run_generate()
-    return out
+def generated_tree(sink_all_versions):
+    return sink_version_dir(sink_all_versions, VERSION)
 
 
 def test_l1_base_feature_count(generated_tree):
