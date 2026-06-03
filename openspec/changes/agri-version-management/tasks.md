@@ -9,7 +9,8 @@
 - [x] 创建 `CLAUDE.md`，封板文件 + 3 次确认保护规则
 - [x] 确认封板绑定（v6.0 / v7.0 / **v7.1** ↔ 对应 GeoJSON 目录）
 - [x] v7.1 验收通过并封板（2026-06-03，`CLAUDE.md` 6 项 FROZEN）
-- [x] v7.2 验收通过并封板（2026-06-03 生产基线，`CLAUDE.md` 8 项 FROZEN）
+- [x] v7.2 验收通过并封板（2026-06-03，`CLAUDE.md` 8 项 FROZEN）
+- [x] v7.3 验收通过并封板（2026-06-03 生产基线，`CLAUDE.md` 10 项 FROZEN）
 - [x] 创建 `openspec/release-notes-geojson.md`（所有版本记录、封板标注、问题诊断）
 - [x] 创建 `openspec/release-notes-fvs.md`（所有版本记录、geourl 有效性检查、封板标注）
 - [x] 清理根目录陈旧文档（删除 6 份：大屏分析报告、GeoJSON格式说明、ods 工作文档、claude-mem-setup）
@@ -41,11 +42,20 @@
   - [x] FR 地图配置 L1/L2 树 + 大屏验收（2026-06-03 封板）
   - [x] release-notes-fvs.md / release-notes-geojson.md
 
-- [ ] 1.4 修复 `Agriculture_v7.3_GCJ02_L3.fvs`
-  - 先执行 FineReport「地图配置 → 同步地理文件」
-  - geourl 改为三层层级入口：`农业基地-大疆测绘/农业基地_v7.3_GCJ02_L3/农业基地-area.json`
-  - 测试验证：FR 地图配置中可见基地/片区/地块三层导航
-  - 更新 release-notes-fvs.md
+- [x] 1.4 修复 `Agriculture_v7.3_GCJ02_L3.fvs` geourl（2026-06-03，`fr_patch_v73_geourl.py`）
+  - 四图 → `农业基地_v7.3_GCJ02_L3/农业基地/{基地名}-area.json`（L2，对齐 GeoJSON L3 树）
+  - [x] 用户验收：FR「同步地理文件」+ 地图配置 L1/L2/L3 + 大屏预览（2026-06-03 封板）
+  - [x] 版本策略：v7.3 **保持四图**；单图试验列入 **v7.4**（不修改 v7.3 结构）
+  - [x] 更新 release-notes-fvs.md
+
+## Phase 1.5：v7.4 单图验证（📋 未开始）
+
+- [ ] 设计器复制 `Agriculture_v7.3_GCJ02_L3.fvs` → `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs`
+- [ ] 保留 1 个 `AREA_MAP`，geourl 试 L1 或参数化 L2（见 release-notes-fvs v7.4 表）
+- [ ] GeoJSON **复用** `农业基地_v7.3_GCJ02_L3/`（无变更则不必新目录）
+- [ ] 重写基地切换 JS（替代四路 `setVisible`）
+- [ ] 验收对照 v7.3 四图：切换、树、高亮、L3 下钻
+- [ ] 更新 release-notes-fvs.md / release-notes-geojson.md
 
 ---
 
@@ -63,10 +73,10 @@
   - [x] FR「同步地理文件」+ 地图配置验收（2026-06-03 封板）
   - [x] release-notes-geojson.md
 
-- [ ] 2.3 验证 `农业基地_v7.3_GCJ02_L3/`
-  - 确认三层目录结构完整（基地 → 片区 → 地块）
-  - 同步地理文件后在 FR 地图配置页面验证可见性
-  - 更新 release-notes-geojson.md
+- [x] 2.3 验证 `农业基地_v7.3_GCJ02_L3/`（2026-06-03 封板）
+  - [x] 三层目录完整（基地 → 片区 → 地块）
+  - [x] FR 地图配置 + 大屏验收
+  - [x] release-notes-geojson.md
 
 ---
 

@@ -2,7 +2,7 @@
 
 **项目编号：** `P2025-G-001`  
 **归属：** 数智部  
-**状态：** **v7.2 生产封板**（L2，验收通过）；v7.1 封板可回退；v7.3 实验验证中  
+**状态：** **v7.3 生产封板**（L3 四图，验收通过）；v7.2 / v7.1 可回退；**v7.4 单图**待建  
 **建档日期：** 2026-06-03  
 **代码仓：** `fr-tools`（2026-06 自全量项目目录迁移）
 
@@ -73,8 +73,11 @@ fr-tools/
 | v6 | 2025-06-24 | `Agriculture_v6.0_20250624_UI_Green.fvs` | 多基地地图切换 |
 | v7.0 | 2026-06-03 | `Agriculture_v7.0_GCJ02_Polygon.fvs` | 四基地 Polygon 封板 |
 | v7.1 | 2026-06-03 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | MultiPolygon 扁平 L1，**封板**（可回退）|
-| v7.2 | 2026-06-03 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | MultiPolygon L2，**封板 + 验收通过（当前生产）** |
-| v7.3 | 2026-06-03 | `Agriculture_v7.3_GCJ02_L3.fvs` | 三层层级（开发中）|
+| v7.2 | 2026-06-03 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | MultiPolygon L2，**封板**（可回退）|
+| v7.3 | 2026-06-03 | `Agriculture_v7.3_GCJ02_L3.fvs` | L3 三层 + **四图**，**封板 + 验收通过（当前生产）** |
+| v7.4 | （规划） | `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | 复用 v7.3 目录；**单图**方案验证（未创建）|
+
+**版本策略（2026-06-03）：** v7.3 不改为单图，与 v7.2 相同保留 `区域地图_CS/WS/BS/YY`；单图 + L1/L2 动态 geourl 在 **v7.4** 单独试错，不影响 v7.2 生产封板。
 
 台账详情：`release-notes-fvs.md`、`release-notes-geojson.md`、`release-notes-scripts.md`。
 
@@ -102,4 +105,5 @@ User:     bigdata
 |-----------|------|------|------|------|
 | `agri-bigscreen-v7-archive` | 2026-06-03 | 文档归档 | ✅ 已归档 | v6→v7 升级工作完整归档 |
 | `agri-version-management` | 2026-06-03 | 版本管理 | 🔧 进行中 | 台账、封板保护、非封板 geourl 修复 |
+| `agri-v74-single-map` | 2026-06-03 | 试验 | 📋 规划中 | v7.4 单图 FVS；v7.3 保持四图 |
 | *(仓库)* `fr-tools` 迁移 | 2026-06-03 | 工程结构 | ✅ 已完成 | 全量项目目录 → 本仓核心文件 + 文档路径更新 |

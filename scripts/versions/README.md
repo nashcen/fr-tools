@@ -10,7 +10,7 @@ versions/
   农业基地_v7.0_GCJ02_Polygon/
   农业基地_v7.1_GCJ02_MultiPolygon/     # 封板
   农业基地_v7.2_GCJ02_MP_L2/            # 封板（生产 L2）
-  农业基地_v7.3_GCJ02_L3/              # L3 开发中
+  农业基地_v7.3_GCJ02_L3/              # 封板（生产 L3）
 ```
 
 发版流程：从 `active/` 复制到对应 `农业基地_*` 目录 → 更新 `openspec/release-notes-scripts.md` → 封板后不再改快照。

@@ -1,10 +1,10 @@
 # 规范：农业大屏核心功能
 
 **规范 ID：** `bigscreen`  
-**版本：** v7.2（2026-06-03，生产封板）  
+**版本：** v7.3（2026-06-03，生产封板）  
 **状态：** 生效中  
-**生产 FVS / GeoJSON：** `Agriculture_v7.2_GCJ02_MP_L2.fvs` ↔ `农业基地_v7.2_GCJ02_MP_L2/`（L2，geourl `农业基地/{基地名}-area.json`，见 `release-notes-fvs.md`）  
-**封板回退：** v7.1 扁平 L1 仍可用
+**生产 FVS / GeoJSON：** `Agriculture_v7.3_GCJ02_L3.fvs` ↔ `农业基地_v7.3_GCJ02_L3/`（L3 四图，L2 geourl，见 `release-notes-fvs.md`）  
+**封板回退：** v7.2（L2）、v7.1（L1）
 
 ---
 
@@ -59,7 +59,11 @@
 
 ### 4.1 组件结构
 
-四张区域地图叠放于同一位置，切换时通过 JS `setVisible` 控制显隐：
+**v7.0–v7.3：** 四张区域地图叠放于同一位置，切换时通过 JS `setVisible` 控制显隐。  
+**v7.3** 在 L3 GeoJSON 下仍用四图（各绑 L2 geourl），不因三层目录改为单图。  
+**v7.4（规划）：** 新建 `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` 单独验证单图方案，见 `release-notes-fvs.md`。
+
+四图布局（当前标准）：
 
 | 基地 | 组件名 | 默认显示 |
 |------|--------|----------|

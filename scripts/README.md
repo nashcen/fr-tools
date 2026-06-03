@@ -32,6 +32,9 @@ python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_fix_area_p
 
 # 坐标转换（lib 模块，可被其他脚本加载）
 python3 scripts/lib/coord_convert_wgs84_to_gcj02.py
+
+# 修复 v7.3 FVS 四图 geourl（写入 FineReport 安装目录）
+python3 scripts/ops/fr_patch_v73_geourl.py
 ```
 
 ## 命名约定（摘要）
