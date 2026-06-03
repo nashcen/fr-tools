@@ -55,6 +55,15 @@ def v3_point_feature(feature: dict) -> dict | None:
     }
 
 
+def fr_point_feature(feature: dict) -> dict | None:
+    """v7.1 point.json：properties 仅含 name（无 center）。"""
+    center = feature["properties"].get("center")
+    geom = feature.get("geometry") or {}
+    if not center and geom.get("type") == "Point":
+        center = geom.get("coordinates")
+    return mk_point_feature(feature["properties"]["name"], center)
+
+
 def mk_area_feature(name: str, center, geometry: dict) -> dict:
     return {
         "type": "Feature",

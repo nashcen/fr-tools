@@ -22,13 +22,20 @@ from __future__ import annotations
 
 import json
 import shutil
+import sys
 from datetime import datetime
 from pathlib import Path
 
-V71_DIR = Path(
-    '/Applications/FineReport/webapps/webroot/WEB-INF'
-    '/assets/map/geographic/农业基地-大疆测绘/农业基地_v7.1_GCJ02_MultiPolygon'
-)
+_SCRIPTS = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(_SCRIPTS.parent), str(_SCRIPTS)]
+
+from lib import settings
+
+V71_VERSION = "农业基地_v7.1_GCJ02_MultiPolygon"
+
+
+def v71_dir() -> Path:
+    return settings.geojson_output_dir(V71_VERSION)
 
 BASE_META = {
     'CS': ('农业基地_GCJ02_CS', '浙江常山'),
@@ -134,7 +141,8 @@ def merge_points(primary: list[dict], extra: list[dict]) -> list[dict]:
 def remove_bare_json_files() -> list[str]:
     """删除无 -area/-point 后缀的合并文件（会导致点地图异常）。"""
     removed = []
-    for p in V71_DIR.glob('农业基地_GCJ02_*.json'):
+    target = v71_dir()
+    for p in target.glob('农业基地_GCJ02_*.json'):
         if p.name.endswith('-area.json') or p.name.endswith('-point.json'):
             continue
         p.unlink()
@@ -150,9 +158,10 @@ def backup_dir(target: Path) -> Path:
 
 
 def fix_base(suffix: str, display_name: str, stem: str) -> dict:
-    area_path = V71_DIR / f'{stem}-area.json'
-    point_path = V71_DIR / f'{stem}-point.json'
-    mixed_path = V71_DIR / f'{stem}.json'
+    root = v71_dir()
+    area_path = root / f'{stem}-area.json'
+    point_path = root / f'{stem}-point.json'
+    mixed_path = root / f'{stem}.json'
 
     if area_path.exists() and point_path.exists():
         area_data = load_fc(area_path)
@@ -197,11 +206,13 @@ def fix_base(suffix: str, display_name: str, stem: str) -> dict:
 
 
 def main() -> None:
-    if not V71_DIR.is_dir():
-        raise SystemExit(f'目录不存在: {V71_DIR}')
+    target = v71_dir()
+    if not target.is_dir():
+        raise SystemExit(f'目录不存在: {target}')
 
+    print(f'目标: {target}')
     print('备份 v7.1 目录...')
-    bak = backup_dir(V71_DIR)
+    bak = backup_dir(target)
     print(f'  → {bak}')
 
     print('\n修复 GeoJSON（仅保留 -area.json / -point.json）')
@@ -218,7 +229,7 @@ def main() -> None:
         print(f'\n已删除禁止的合并文件: {removed}')
 
     print('\n目录文件:')
-    for p in sorted(V71_DIR.glob('农业基地_GCJ02_*.json')):
+    for p in sorted(target.glob('农业基地_GCJ02_*.json')):
         print(f'  {p.name}')
 
     print('\n完成。FVS geourl 须指向 *-area.json；请在 FR「地图配置」同步地理文件。')

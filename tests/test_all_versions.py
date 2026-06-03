@@ -75,6 +75,21 @@ def test_v70_youyang_legacy_has_districts(sink_all_versions: Path):
     assert len(data["features"]) == 7
 
 
+def test_v71_youyang_flat_area_and_points(sink_all_versions: Path):
+    import json
+
+    out = sink_version_dir(sink_all_versions, "农业基地_v7.1_GCJ02_MultiPolygon")
+    area = json.loads((out / "农业基地_GCJ02_YY-area.json").read_text(encoding="utf-8"))
+    point = json.loads((out / "农业基地_GCJ02_YY-point.json").read_text(encoding="utf-8"))
+    assert area.get("name") == "重庆酉阳"
+    assert len(area["features"]) == 7
+    assert len(point["features"]) == 7
+    assert "name" not in point
+    for feat in point["features"]:
+        assert list(feat["properties"].keys()) == ["name"]
+        assert feat["geometry"]["type"] == "Point"
+
+
 def test_v71_only_flat_eight_files(sink_all_versions: Path):
     out = sink_version_dir(sink_all_versions, "农业基地_v7.1_GCJ02_MultiPolygon")
     names = sorted(p.name for p in out.glob("农业基地_GCJ02_*.json"))

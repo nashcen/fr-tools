@@ -92,6 +92,38 @@ def _load_db_district_map(bases: list[str]) -> dict:
     return db_map
 
 
+def _supplement_district_points(
+    area_features: list, point_features: list
+) -> list:
+    """离线生成时，用片区多边形重心补全 point（供 v7.1 -point.json 等）。"""
+    seen = {
+        (f["properties"]["基地名称"], f["properties"]["name"])
+        for f in point_features
+    }
+    extra = []
+    for feat in area_features:
+        base = feat["properties"]["基地名称"]
+        name = feat["properties"]["name"]
+        if (base, name) in seen:
+            continue
+        center = feat["properties"].get("center")
+        if not center:
+            continue
+        extra.append(
+            {
+                "type": "Feature",
+                "properties": {
+                    "name": name,
+                    "center": center,
+                    "基地名称": base,
+                },
+                "geometry": {"type": "Point", "coordinates": center},
+            }
+        )
+        seen.add((base, name))
+    return point_features + extra
+
+
 def _load_point_features(all_centroids: dict, bases: list[str]) -> list:
     if settings.skip_db():
         return []
@@ -344,6 +376,10 @@ def generate(profile: GeojsonVersionProfile) -> None:
     point_features = _load_point_features(all_centroids, bases)
 
     if profile.write_l1_flat_per_base:
+        if settings.skip_db():
+            point_features = _supplement_district_points(
+                area_features, point_features
+            )
         print("\n步骤 5.1: 写出 v7.1 扁平 L1（*-area.json / *-point.json）...")
         for base, sfx in BASE_SUFFIX.items():
             if base not in bases:
@@ -355,9 +391,11 @@ def generate(profile: GeojsonVersionProfile) -> None:
                 if f["properties"]["基地名称"] == base
             ]
             feats_point = [
-                writer.v3_point_feature(f)
+                x
                 for f in point_features
                 if f["properties"]["基地名称"] == base
+                for x in [writer.fr_point_feature(f)]
+                if x
             ]
             writer.write_geojson(
                 gcj02_dir / f"{stem}-area.json",
@@ -366,7 +404,7 @@ def generate(profile: GeojsonVersionProfile) -> None:
             )
             writer.write_geojson(
                 gcj02_dir / f"{stem}-point.json",
-                [x for x in feats_point if x],
+                feats_point,
             )
 
     if profile.write_legacy_merged:

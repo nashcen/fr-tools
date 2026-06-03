@@ -10,10 +10,12 @@
       "structure_sha256": "73998148b4084210f1ff8f31da14c3496532fe674ad096c02837e76db91a8f73"
     },
     "农业基地_GCJ02_BS-point.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
+      "feature_count": 2,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 2,
+      "structure_sha256": "c462ed6459667bc9f827463898561bf5706e82bcd1395a45e1874dc27bb65c27"
     },
     "农业基地_GCJ02_CS-area.json": {
       "feature_count": 24,
@@ -24,10 +26,12 @@
       "structure_sha256": "6b1c6b431f8b58627a07dee0ca47e757451a21c44cac74d8bc11bc5e9a5fa95e"
     },
     "农业基地_GCJ02_CS-point.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
+      "feature_count": 24,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 24,
+      "structure_sha256": "57bb59e60f38e84b666c8cb0545bfa2066354e1ae4c4b26a43b6d1d8fbb8f7c3"
     },
     "农业基地_GCJ02_WS-area.json": {
       "feature_count": 37,
@@ -38,10 +42,12 @@
       "structure_sha256": "521d92fba00eb05a6a7e915f77a6fb5da7112b3e7c64bc92fb4cf45532f2736b"
     },
     "农业基地_GCJ02_WS-point.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
+      "feature_count": 37,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 37,
+      "structure_sha256": "2d0e8e06704feda09a53e23de28be66efec259998a4346919281c3be6b0a7f90"
     },
     "农业基地_GCJ02_YY-area.json": {
       "feature_count": 7,
@@ -52,10 +58,12 @@
       "structure_sha256": "75af62cd07e6744cd9ab435f22008e25628edf32974e810fe17b950673d2ed01"
     },
     "农业基地_GCJ02_YY-point.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
+      "feature_count": 7,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 7,
+      "structure_sha256": "85ff9606848f022dc6ab8bb27cd0967245d985328efcc7a5ce4bb57886fb2901"
     }
   }
 }
