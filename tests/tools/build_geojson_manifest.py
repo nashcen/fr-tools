@@ -2,9 +2,9 @@
 """
 Build tests/golden/geojson/{version}/manifest.json from an existing GeoJSON tree (read-only).
 
-Example (read production v7.4 without modifying files):
+Example (from repo sink after generation):
   python3 tests/tools/build_geojson_manifest.py \\
-    --source "/Applications/FineReport/.../农业基地_v7.4_GCJ02_L3_SingleMap" \\
+    --source data/sink/map/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap \\
     --version 农业基地_v7.4_GCJ02_L3_SingleMap
 """
 

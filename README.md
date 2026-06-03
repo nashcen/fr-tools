@@ -18,7 +18,7 @@
 |------------|------------------------------------------|
 | `openspec/` 规范与版本台账 | FVS 模板（`WEB-INF/reportlets/.../5.农业大屏二期/`） |
 | `scripts/` 活跃脚本 + 版本快照 | 生产 GeoJSON（`WEB-INF/assets/map/geographic/农业基地-大疆测绘/`） |
-| `data/` KML、盘点 Excel、中间 GeoJSON | 蓝图、会议纪要、UI 切图、DB DDL 归档等 |
+| `data/source/` 原始 KML、Excel；`data/sink/map/` 生成 GeoJSON | 蓝图、会议纪要、UI 切图、DB DDL 归档等 |
 
 规范与封板规则仍以 **`openspec/` + `CLAUDE.md`** 为唯一真相源；运行时大屏资源在 **FineReport 安装目录**，不在 Git 中。
 
@@ -30,10 +30,9 @@
 fr-tools/
 ├── README.md                 # 本说明
 ├── CLAUDE.md                 # 封板保护、关键路径（AI / 人工必读）
-├── data/                     # 源数据与本地中间产物
-│   ├── 1.农业基地KML/        # 大疆测绘 KML（按基地分子目录）
-│   ├── 2.农业基地JSON/       # 本地归档 / 对账用 GeoJSON（可选）
-│   └── 农业资产盘点明细.xlsx # 地块层级对账
+├── data/
+│   ├── source/               # 原始输入（KML、Excel、归档 JSON）
+│   └── sink/map/农业基地-大疆测绘/  # 生成 GeoJSON（按版本子目录）
 ├── scripts/
 │   ├── active/               # 日常只改此处
 │   ├── lib/                  # 共享模块（坐标转换等）
@@ -52,8 +51,13 @@ fr-tools/
 ## 快速开始
 
 ```bash
-# 从 KML 生成 GeoJSON（输出目录见 scripts/active/geojson_generate_from_kml.py 内 GCJ02_DIR）
+cp .env.example .env   # 配置 MYSQL_PASSWORD 等
+
+# 从 KML 生成 GeoJSON → data/sink/map/农业基地-大疆测绘/{版本}/
 python3 scripts/active/geojson_generate_from_kml.py
+
+# 部署至 FineReport（可选）
+./scripts/ops/sync_sink_map_to_finereport.sh 农业基地_v7.4_GCJ02_L3_SingleMap
 
 # v7.1 封板：area/point 分离（使用版本快照，勿改封板部署目录）
 python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_fix_area_point_split.py
@@ -84,9 +88,10 @@ python3 scripts/lib/coord_convert_wgs84_to_gcj02.py
 
 | 原路径（P2025 全量目录） | 本仓路径 |
 |--------------------------|----------|
-| `5.数据设计/农业数据/6.片区边界/1.农业基地KML/` | `data/1.农业基地KML/` |
-| `5.数据设计/.../农业资产盘点明细.xlsx` | `data/农业资产盘点明细.xlsx` |
-| `5.数据设计/.../2.农业基地JSON/` | `data/2.农业基地JSON/` |
+| `5.数据设计/.../1.农业基地KML/` | `data/source/1.农业基地KML/` |
+| `5.数据设计/.../农业资产盘点明细.xlsx` | `data/source/农业资产盘点明细.xlsx` |
+| `5.数据设计/.../2.农业基地JSON/` | `data/source/2.农业基地JSON/` |
+| FR `WEB-INF/.../农业基地-大疆测绘/{版本}/` | `data/sink/map/农业基地-大疆测绘/{版本}/`（生成后同步）|
 | `6.开发实现/scripts/` | `scripts/` |
 
 FineReport 部署路径（`WEB-INF/...`）**未迁移**，见 `CLAUDE.md` 关键路径表。

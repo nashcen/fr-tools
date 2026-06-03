@@ -49,6 +49,8 @@ fr-tools/
 ├── README.md              # 迁移说明、快速开始、路径对照
 ├── CLAUDE.md              # 封板保护 + FineReport 关键路径
 ├── data/
+│   ├── source/              # KML、Excel（只读）
+│   └── sink/map/农业基地-大疆测绘/  # 生成 GeoJSON
 │   ├── 1.农业基地KML/     # KML 源（大疆测绘）
 │   ├── 2.农业基地JSON/    # 本地中间 / 归档 GeoJSON
 │   └── 农业资产盘点明细.xlsx

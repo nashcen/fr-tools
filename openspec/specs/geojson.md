@@ -1,7 +1,7 @@
 # 规范：GeoJSON 片区边界数据
 
 **规范 ID：** `geojson`  
-**版本：** v4（2026-06-03）  
+**版本：** v5（2026-06-03，data/source + data/sink）  
 **状态：** 生效中
 
 ---
@@ -9,16 +9,19 @@
 ## 一、数据链路
 
 ```
-大疆测绘输出 KML（CGCS2000 ≈ WGS84）
-  fr-tools/data/1.农业基地KML/          （原：5.数据设计/.../1.农业基地KML/）
-      ↓ scripts/active/geojson_generate_from_kml.py（活跃）
-      ↓ 版本快照：scripts/versions/{GeoJSON目录名}/（见 specs/scripts.md）
-  v3 GCJ-02 三层层级（脚本直接写出到 FineReport）
-      → WEB-INF/.../农业基地_v3_GCJ02/
-  v2 完整属性格式（脚本直接写出，DB 对账用）
-      → WEB-INF/.../农业基地_v2_WGS84/
-      ↓ FineReport「地图配置」→「同步地理文件」
-  大屏 chart geourl 加载
+大疆测绘 KML + 盘点 Excel（只读）
+  data/source/1.农业基地KML/
+  data/source/农业资产盘点明细.xlsx
+      ↓ scripts/active/geojson_generate_from_kml.py
+      ↓ scripts/versions/{GeoJSON目录名}/（版本入口，见 specs/scripts.md）
+  GCJ-02 三层层级 + 可选 legacy 合并 json
+      → data/sink/map/农业基地-大疆测绘/{版本}/
+  v2 对账 sidecar
+      → data/sink/map/农业基地-大疆测绘/农业基地_v2_WGS84/
+      ↓ ops/sync_sink_map_to_finereport.sh（部署，封板目录慎用 PROTECT_EXISTING）
+  WEB-INF/assets/map/geographic/农业基地-大疆测绘/{版本}/
+      ↓ FR「同步地理文件」+ FVS geourl
+  大屏加载
 ```
 
 ---
@@ -96,7 +99,7 @@
 农业基地_v1_TEST/                       ← v1 旧版（归档保留）
 ```
 
-**本地归档路径：** `data/2.农业基地JSON/`（原：`5.数据设计/.../2.农业基地JSON/`）
+**本地归档路径：** `data/source/2.农业基地JSON/`（只读参考，非生成入口）
 
 ---
 

@@ -1,0 +1,6 @@
+# 生成产物（由 scripts/active/geojson_generate_from_kml.py 写入）
+map/**/*.json
+
+# 保留说明与目录占位
+!map/**/README.md
+!map/**/.gitkeep

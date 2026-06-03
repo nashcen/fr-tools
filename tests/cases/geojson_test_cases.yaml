@@ -1,0 +1,75 @@
+# 农业基地 GeoJSON — 测试用例（v2 source/sink）
+meta:
+  project: fr-tools
+  layout: data/source + data/sink/map/农业基地-大疆测绘
+  baseline_version: 农业基地_v7.4_GCJ02_L3_SingleMap
+  updated: "2026-06-03"
+
+cases:
+  - id: TC-DATA-01
+    title: source 目录含 KML
+    priority: P0
+    type: automated
+    expected:
+      path: data/source/1.农业基地KML
+      has_kml: true
+    automated_by: tests/test_data_layout.py::test_source_kml_exists
+
+  - id: TC-DATA-02
+    title: source 含盘点 Excel
+    priority: P0
+    type: automated
+    automated_by: tests/test_data_layout.py::test_source_excel_exists
+
+  - id: TC-DATA-03
+    title: sink map 根目录存在
+    priority: P0
+    type: automated
+    expected:
+      path: data/sink/map/农业基地-大疆测绘
+    automated_by: tests/test_data_layout.py::test_sink_map_root_exists
+
+  - id: TC-DATA-04
+    title: 默认生成路径为 sink 下版本子目录
+    priority: P0
+    type: automated
+    automated_by: tests/test_data_layout.py::test_settings_default_paths
+
+  - id: TC-CFG-01
+    title: 缺少 MySQL 密码时报错
+    priority: P0
+    type: automated
+    automated_by: tests/test_settings.py::test_mysql_config_requires_password
+
+  - id: TC-CFG-03
+    title: KML Excel 默认在 source
+    priority: P0
+    type: automated
+    automated_by: tests/test_settings.py::test_default_data_paths
+
+  - id: TC-GEO-01
+    title: v7.4 文件清单与 golden 一致
+    priority: P0
+    type: automated
+    automated_by: tests/test_geojson_generate.py::test_generate_matches_golden_manifest
+
+  - id: TC-VER-01
+    title: v7.4 无 legacy 合并 json
+    priority: P0
+    type: automated
+    automated_by: tests/test_version_profiles.py::test_v74_no_legacy_merged
+
+  - id: TC-DEP-01
+    title: sink 同步至 FineReport
+    priority: P1
+    type: manual
+    steps:
+      - 生成 v7.4 至 data/sink/map/...
+      - 运行 sync_sink_map_to_finereport.sh
+      - 设计器验证 geourl 可读
+
+  - id: TC-FVS-01
+    title: v7.4 单图 geourl
+    priority: P0
+    type: manual
+    depends_on: TC-DEP-01

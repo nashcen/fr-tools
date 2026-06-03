@@ -9,11 +9,12 @@
 
 | 变量 | 含义 |
 |------|------|
-| `GEOJSON_VERSION` | 输出版本目录名（默认 `农业基地_v7.4_GCJ02_L3_SingleMap`）|
-| `GEOJSON_OUTPUT_DIR` | 可选，覆盖完整输出路径（测试用）|
-| `GEOJSON_PROTECT_EXISTING` | `1` 时跳过已存在的 `.json`（保护封板 GeoJSON）|
-| `GEOJSON_SKIP_DB` | `1` 离线生成，不查库、不写库 |
-| `KML_DIR` / `EXCEL_PATH` | 默认 `data/` 下路径 |
+| `DATA_SOURCE_DIR` | 原始数据（默认 `data/source`）|
+| `DATA_SINK_MAP_ROOT` | 生成根（默认 `data/sink/map/农业基地-大疆测绘`）|
+| `GEOJSON_VERSION` | sink 下版本子目录名 |
+| `GEOJSON_OUTPUT_DIR` | 可选覆盖（pytest 临时目录）|
+| `GEOJSON_PROTECT_EXISTING` | `1` 不覆盖已有 `.json` |
+| `GEOJSON_SKIP_DB` | `1` 离线生成 |
 
 ## 目录
 
@@ -28,8 +29,11 @@
 ## 常用命令
 
 ```bash
-# 生产 v7.4（读 .env，不覆盖已有 json）
+# 生成 → data/sink/map/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap/
 python3 scripts/active/geojson_generate_from_kml.py
+
+# 同步至 FineReport
+./scripts/ops/sync_sink_map_to_finereport.sh 农业基地_v7.4_GCJ02_L3_SingleMap
 
 # 指定封板版本（四图 v7.3）
 python3 scripts/versions/农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py
@@ -38,7 +42,7 @@ python3 scripts/versions/农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py
 GEOJSON_OUTPUT_DIR=/tmp/geo-out GEOJSON_PROTECT_EXISTING=0 GEOJSON_SKIP_DB=1 \
   MYSQL_PASSWORD=x python3 scripts/active/geojson_generate_from_kml.py
 
-# 测试
+# 测试（计划见 tests/TEST_PLAN.md，用例表 tests/cases/geojson_test_cases.yaml）
 pip install -r requirements-dev.txt
 pytest
 

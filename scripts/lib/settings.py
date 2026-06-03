@@ -11,6 +11,9 @@ from pathlib import Path
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 
+# 与 FineReport / geourl 一致的地图资源根名
+MAP_COLLECTION_NAME = "农业基地-大疆测绘"
+
 
 def repo_root() -> Path:
     return Path(os.environ.get("FR_TOOLS_REPO", _REPO_ROOT)).resolve()
@@ -38,12 +41,28 @@ def _boot() -> None:
     _load_dotenv()
 
 
+def data_source_dir() -> Path:
+    _boot()
+    raw = os.environ.get("DATA_SOURCE_DIR")
+    if raw:
+        return Path(raw).expanduser().resolve()
+    return repo_root() / "data" / "source"
+
+
+def data_sink_map_root() -> Path:
+    _boot()
+    raw = os.environ.get("DATA_SINK_MAP_ROOT")
+    if raw:
+        return Path(raw).expanduser().resolve()
+    return repo_root() / "data" / "sink" / "map" / MAP_COLLECTION_NAME
+
+
 def kml_dir() -> Path:
     _boot()
     raw = os.environ.get("KML_DIR")
     if raw:
         return Path(raw).expanduser().resolve()
-    return repo_root() / "data" / "1.农业基地KML"
+    return data_source_dir() / "1.农业基地KML"
 
 
 def excel_path() -> Path:
@@ -51,7 +70,7 @@ def excel_path() -> Path:
     raw = os.environ.get("EXCEL_PATH")
     if raw:
         return Path(raw).expanduser().resolve()
-    return repo_root() / "data" / "农业资产盘点明细.xlsx"
+    return data_source_dir() / "农业资产盘点明细.xlsx"
 
 
 def finereport_webinf() -> Path:
@@ -64,22 +83,22 @@ def finereport_webinf() -> Path:
     ).expanduser().resolve()
 
 
-def geojson_map_root() -> Path:
+def finereport_geojson_map_root() -> Path:
+    """FineReport 部署目录（同步 sink 目标，非生成默认输出）。"""
     _boot()
     sub = os.environ.get(
         "GEOJSON_MAP_SUBDIR",
-        "assets/map/geographic/农业基地-大疆测绘",
+        f"assets/map/geographic/{MAP_COLLECTION_NAME}",
     )
     return finereport_webinf() / sub
 
 
 def geojson_wgs84_dir() -> Path:
     _boot()
-    sub = os.environ.get(
-        "GEOJSON_WGS84_SUBDIR",
-        "assets/map/geographic/world/农业基地-大疆测绘/农业基地_v2_WGS84",
-    )
-    return finereport_webinf() / sub
+    raw = os.environ.get("GEOJSON_WGS84_DIR")
+    if raw:
+        return Path(raw).expanduser().resolve()
+    return data_sink_map_root() / "农业基地_v2_WGS84"
 
 
 def geojson_version_name() -> str:
@@ -88,12 +107,13 @@ def geojson_version_name() -> str:
 
 
 def geojson_output_dir(version: str | None = None) -> Path:
+    """生成输出目录：默认 data/sink/map/农业基地-大疆测绘/{版本}。"""
     _boot()
     override = os.environ.get("GEOJSON_OUTPUT_DIR")
     if override:
         return Path(override).expanduser().resolve()
     name = version or geojson_version_name()
-    return geojson_map_root() / name
+    return data_sink_map_root() / name
 
 
 def skip_db() -> bool:
@@ -113,7 +133,6 @@ def protect_existing_geojson() -> bool:
     return _env_bool("GEOJSON_PROTECT_EXISTING", True)
 
 
-# 封板 GeoJSON 目录名（禁止覆盖已有 .json，除非 GEOJSON_OUTPUT_DIR 指向其他路径）
 FROZEN_GEOJSON_VERSION_DIRS: frozenset[str] = frozenset(
     {
         "农业基地_v6.0_TEST",
@@ -140,3 +159,8 @@ def mysql_config() -> dict[str, str | int]:
         "password": password,
         "database": os.environ.get("MYSQL_DATABASE", "yxg_bigscreen"),
     }
+
+
+# 兼容旧代码引用
+def geojson_map_root() -> Path:
+    return data_sink_map_root()
