@@ -8,7 +8,7 @@
 
 - [x] 创建 `CLAUDE.md`，封板文件 + 3 次确认保护规则
 - [x] 确认封板绑定（v6.0 / v7.0 / **v7.1** ↔ 对应 GeoJSON 目录）
-- [x] v7.1 封板登记（2026-06-03，`CLAUDE.md` 增至 6 项 FROZEN）
+- [x] v7.1 验收通过并封板（2026-06-03 生产基线，`CLAUDE.md` 6 项 FROZEN）
 - [x] 创建 `openspec/release-notes-geojson.md`（所有版本记录、封板标注、问题诊断）
 - [x] 创建 `openspec/release-notes-fvs.md`（所有版本记录、geourl 有效性检查、封板标注）
 - [x] 清理根目录陈旧文档（删除 6 份：大屏分析报告、GeoJSON格式说明、ods 工作文档、claude-mem-setup）

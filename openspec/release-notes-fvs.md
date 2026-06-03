@@ -17,7 +17,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `Agriculture_v6.0_TEST.fvs` | `农业基地_v6.0_TEST` | ✅ | ✅ FROZEN | 封板可用 |
 | `Agriculture_v6.9_WGS84_Polygon.fvs` | `农业基地_v6.9_WGS84_Polygon` | ✅ | — | 手动修复，非生产 |
 | `Agriculture_v7.0_GCJ02_Polygon.fvs` | `农业基地_v7.0_GCJ02_Polygon` | ✅ | ✅ FROZEN | 封板可用 |
-| `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | `农业基地_v7.1_GCJ02_MultiPolygon` | ✅ | ✅ FROZEN | 封板可用（推荐生产）|
+| `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | `农业基地_v7.1_GCJ02_MultiPolygon` | ✅ | ✅ FROZEN | **生产基线（验收通过）** |
 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | `农业基地_v7.2_GCJ02_MP_L2` | ✅ | — | 🔧 L2 验证中 |
 | `Agriculture_v7.3_GCJ02_L3.fvs` | `农业基地_v7.3_GCJ02_L3` | ❌ | — | 🔧 待修复 |
 
@@ -90,7 +90,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | 验收 | ✅ 地图配置 + 大屏预览通过 |
 | GeoJSON 目录 | `农业基地_v7.1_GCJ02_MultiPolygon` |
 | 格式 | geourl → `*-area.json`；目录仅 `-area`/`-point`（**禁止无后缀 `.json`**）|
-| 定位 | **四基地 MultiPolygon 推荐生产版本** |
+| 定位 | **四基地 MultiPolygon — 当前唯一生产版本（验收通过，已封板）** |
 
 **geourl 路径表：**
 

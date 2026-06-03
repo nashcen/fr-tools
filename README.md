@@ -3,6 +3,8 @@
 **项目编号：** `P2025-G-001`（数智部 · 农业大屏一期）  
 **本仓库：** 自原项目管理目录 **迁移** 后的迭代专用仓，仅保留日常开发所需的核心资产。
 
+**当前生产基线（封板）：** `v7.1` — `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` + `农业基地_v7.1_GCJ02_MultiPolygon/`（MultiPolygon、`*-area.json` / `*-point.json`，验收已通过，禁止修改，见 `CLAUDE.md`）。
+
 ---
 
 ## 为何迁移

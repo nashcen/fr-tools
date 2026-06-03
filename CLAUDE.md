@@ -2,6 +2,8 @@
 
 > **仓库：** 自 `P2025-G-001-数智部-农业大屏一期 ★/` 迁移的精简仓，仅含 `data/`、`scripts/`、`openspec/`。FVS 与生产 GeoJSON 仍在 FineReport `WEB-INF/`。说明见根目录 `README.md`。
 
+**生产基线：** **v7.1**（`Agriculture_v7.1_GCJ02_MultiPolygon.fvs` + `农业基地_v7.1_GCJ02_MultiPolygon/`）— 验收通过且已封板；v7.2/v7.3 仅为实验版本，不得替代 v7.1 上线。
+
 ## ⛔ 封板文件保护（CRITICAL）
 
 以下 **6** 个文件/目录已**封板（FROZEN）**，绝对不允许修改、重命名、移动或删除内容：

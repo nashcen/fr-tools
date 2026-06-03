@@ -60,7 +60,7 @@ FVS 与 GeoJSON **一一对应命名**，6 个版本：
 | `v6.0_TEST` | ✅ FROZEN | ✅ | ✅ 可用（常山单基地）|
 | `v6.9_WGS84_Polygon` | — | ❌ | 🔧 待修复（geourl 含 `world/` + 目录名错）|
 | `v7.0_GCJ02_Polygon` | ✅ FROZEN | ✅ | ✅ 可用（四基地）|
-| `v7.1_GCJ02_MultiPolygon` | ✅ FROZEN | ✅ | ✅ 封板（2026-06-03，推荐生产）|
+| `v7.1_GCJ02_MultiPolygon` | ✅ FROZEN | ✅ | ✅ **生产基线**（2026-06-03 验收通过并封板）|
 | `v7.2_GCJ02_MP_L2` | — | ✅ | 🔧 L2 验证中（geourl 已对齐两层目录）|
 | `v7.3_GCJ02_L3` | — | ❌ | 🔧 待修复（geourl 结构需改为三层格式）|
 

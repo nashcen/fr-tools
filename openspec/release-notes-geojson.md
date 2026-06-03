@@ -14,7 +14,7 @@
 | `农业基地_v6.0_TEST` | GCJ-02 | Polygon | 1 | 常山 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
 | `农业基地_v6.9_WGS84_Polygon` | WGS-84 | Polygon | 1 | 4 | 旧式 | — | ❌ 废弃 |
 | `农业基地_v7.0_GCJ02_Polygon` | GCJ-02 | Polygon | 1 | 4 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
-| `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | 封板可用 |
+| `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | **生产基线（验收通过）** |
 | `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 3+空 | 目录层级 L2 | — | 🔧 验证中 |
 | `农业基地_v7.3_GCJ02_L3` | GCJ-02 | MultiPolygon | **3** | 4 | 基地/片区/地块 | — | 🔧 开发中 |
 
@@ -118,7 +118,14 @@
 
 ---
 
-### `农业基地_v7.1_GCJ02_MultiPolygon` — FROZEN
+### `农业基地_v7.1_GCJ02_MultiPolygon` — FROZEN（生产基线）
+
+| 项 | 值 |
+|----|-----|
+| 封板日期 | 2026-06-03 |
+| 验收 | ✅ area/point 分离、FR 地图配置、点地图、四基地大屏预览通过 |
+| 对应 FVS | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` |
+| 定位 | **当前唯一推荐生产版本**；v7.2/v7.3 不得替代 |
 
 | 基地 | area 文件 | 片区数 | point 数 |
 |------|-----------|--------|----------|
@@ -157,5 +164,5 @@
 | 日期 | 版本 | 事件 |
 |------|------|------|
 | 2026-06-03 | v7.0 | 抽检；删除 CS_test |
-| 2026-06-03 | v7.1 | 封板 |
+| 2026-06-03 | v7.1 | 验收通过并封板（生产基线） |
 | 2026-06-03 | v7.2 | 重命名为 `GCJ02_MP_L2`；部署 L2 目录树；FVS geourl 指向 `农业基地/{基地}-area.json` |
