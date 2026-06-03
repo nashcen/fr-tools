@@ -3,8 +3,8 @@
 **项目编号：** `P2025-G-001`（数智部 · 农业大屏一期）  
 **本仓库：** 自原项目管理目录 **迁移** 后的迭代专用仓，仅保留日常开发所需的核心资产。
 
-**当前生产基线（封板）：** `v7.3` 四图 — `Agriculture_v7.3_GCJ02_L3.fvs` + `农业基地_v7.3_GCJ02_L3/`。  
-**单图试验：** `v7.4` — `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`（组件 `区域地图`，L1 geourl，待验收）。
+**当前生产基线（封板）：** `v7.4` 单图 — `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`（组件 `区域地图`，L1 geourl）。  
+**可回退：** `v7.3` 四图、`v7.2` L2、`v7.1` L1（见 `CLAUDE.md` **12** 项 FROZEN）。
 
 ---
 

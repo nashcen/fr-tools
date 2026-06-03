@@ -73,7 +73,7 @@
 
 农业基地_v7.1_GCJ02_MultiPolygon/       ← v7.1 封板：扁平 L1，仅 -area/-point，禁止无后缀 .json
 
-农业基地_v7.2_GCJ02_MP_L2/             ← v7.2 封板（生产）：L2 两层（类比 中国/浙江省）
+农业基地_v7.2_GCJ02_MP_L2/             ← v7.2 封板：L2 两层（类比 中国/浙江省）
   农业基地-area.json                    ← L1 基地
   农业基地-point.json
   农业基地/
@@ -83,8 +83,8 @@
     …
   ⛔ 勿放置 农业基地_GCJ02_XX.json（点地图异常）
 
-农业基地_v7.3_GCJ02_L3/                 ← v7.3 封板（生产四图）：L3 三层
-农业基地_v7.4_GCJ02_L3_SingleMap/       ← v7.4 单图：同 L3 结构；FVS geourl 绑 L1 农业基地-area.json
+农业基地_v7.3_GCJ02_L3/                 ← v7.3 封板（四图，可回退）：L3 三层
+农业基地_v7.4_GCJ02_L3_SingleMap/       ← v7.4 封板（生产单图）：L3 结构；FVS geourl 绑 L1 农业基地-area.json
   农业基地-area.json                    ← L1
   农业基地/
     浙江常山-area.json                  ← L2（FVS 区域地图_CS geourl）

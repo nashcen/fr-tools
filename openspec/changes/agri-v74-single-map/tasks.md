@@ -19,10 +19,15 @@
 - [x] geourl → L1 `…/农业基地_v7.4_GCJ02_L3_SingleMap/农业基地-area.json`（`fr_patch_v74_single_map.py`）
 - [x] 移除四图 `区域地图_CS/WS/BS/YY` 的 `setVisible`
 - [x] 基地切换 / 树视图 `panTo` 统一为 `区域地图`
-- [ ] 用户验收：四基地切换、片区树、高亮、L3 下钻
+- [x] 用户验收：四基地切换、片区树、高亮、L3 下钻（2026-06-03）
 
 ## Phase 3：文档与脚本（✅）
 
 - [x] `scripts/active` `GCJ02_DIR` → v7.4 目录
 - [x] `scripts/versions/农业基地_v7.4_GCJ02_L3_SingleMap/` 快照
 - [x] 更新 release-notes / bigscreen / project
+
+## Phase 4：封板（✅）
+
+- [x] `CLAUDE.md` 封板增至 **12** 项（v7.4 FVS + GeoJSON）
+- [x] 生产基线升至 v7.4；v7.3 保留四图可回退

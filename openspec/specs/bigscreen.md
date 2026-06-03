@@ -1,10 +1,10 @@
 # 规范：农业大屏核心功能
 
 **规范 ID：** `bigscreen`  
-**版本：** v7.3（2026-06-03，生产封板）  
+**版本：** v7.4（2026-06-03，生产封板）  
 **状态：** 生效中  
-**生产 FVS / GeoJSON：** `Agriculture_v7.3_GCJ02_L3.fvs` ↔ `农业基地_v7.3_GCJ02_L3/`（L3 四图，L2 geourl，见 `release-notes-fvs.md`）  
-**封板回退：** v7.2（L2）、v7.1（L1）
+**生产 FVS / GeoJSON：** `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` ↔ `农业基地_v7.4_GCJ02_L3_SingleMap/`（L3 单图，L1 geourl，见 `release-notes-fvs.md`）  
+**封板回退：** v7.3（四图）、v7.2（L2）、v7.1（L1）
 
 ---
 
@@ -60,8 +60,8 @@
 ### 4.1 组件结构
 
 **v7.0–v7.3：** 四张区域地图叠放于同一位置，切换时通过 JS `setVisible` 控制显隐。  
-**v7.3** 在 L3 GeoJSON 下仍用四图（各绑 L2 geourl），不因三层目录改为单图。  
-**v7.4（单图试验）：** `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` — 仅 `区域地图` 一个 `AREA_MAP`，geourl 绑 L1 `农业基地-area.json`，基地切换用 `panTo`（见 `release-notes-fvs.md`）。
+**v7.3（封板，四图）：** L3 GeoJSON + 四图各绑 L2 geourl，基地切换 `setVisible` + `panTo`。  
+**v7.4（生产，单图）：** `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` — 仅 `区域地图` 一个 `AREA_MAP`，geourl 绑 L1 `农业基地-area.json`，基地切换用 `panTo`（见 `release-notes-fvs.md`）。
 
 四图布局（当前标准）：
 

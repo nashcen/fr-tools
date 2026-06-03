@@ -43,7 +43,7 @@ scripts/
 | `农业基地_v7.1_GCJ02_MultiPolygon/` | 同名 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | ✅ | `geojson_fix_area_point_split.py` |
 | `农业基地_v7.2_GCJ02_MP_L2/` | 同名 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | ✅ | `geojson_generate_from_kml.py` |
 | `农业基地_v7.3_GCJ02_L3/` | 同名 | `Agriculture_v7.3_GCJ02_L3.fvs` | ✅ | `geojson_generate_from_kml.py` |
-| `农业基地_v7.4_GCJ02_L3_SingleMap/` | 同名 | `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | — | `geojson_generate_from_kml.py` |
+| `农业基地_v7.4_GCJ02_L3_SingleMap/` | 同名 | `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | ✅ | `geojson_generate_from_kml.py` |
 
 ---
 
@@ -108,7 +108,7 @@ python3 scripts/versions/农业基地_v7.2_GCJ02_MP_L2/geojson_generate_from_kml
 
 ---
 
-## `农业基地_v7.3_GCJ02_L3/` — 封板（生产四图）
+## `农业基地_v7.3_GCJ02_L3/` — 封板（四图，可回退）
 
 | 项 | 值 |
 |----|-----|
@@ -121,13 +121,13 @@ python3 scripts/versions/农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py
 
 ---
 
-## `农业基地_v7.4_GCJ02_L3_SingleMap/` — 单图试验
+## `农业基地_v7.4_GCJ02_L3_SingleMap/` — 封板（生产单图）
 
 | 项 | 值 |
 |----|-----|
 | `GCJ02_DIR` | `.../农业基地_v7.4_GCJ02_L3_SingleMap` |
 | 活跃 `active/` | 当前指向本目录 |
-| FVS 运维 | `ops/fr_patch_v74_single_map.py` |
+| FVS 运维 | `ops/fr_patch_v74_single_map.py`（已执行，封板后勿重跑）|
 
 ```bash
 python3 scripts/active/geojson_generate_from_kml.py
