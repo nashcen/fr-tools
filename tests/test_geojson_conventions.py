@@ -25,9 +25,16 @@ def generated_tree(sink_all_versions):
 
 def test_l1_base_feature_count(generated_tree):
     data = _load_fc(generated_tree / "农业基地-area.json")
-    assert len(data["features"]) == 3
+    assert len(data["features"]) == 4
     names = {f["properties"]["name"] for f in data["features"]}
-    assert names == {"浙江常山", "四川武胜", "广西百色"}
+    assert names == {"浙江常山", "四川武胜", "广西百色", "重庆酉阳"}
+
+
+def test_youyang_l2_district_count(generated_tree):
+    data = _load_fc(generated_tree / "农业基地" / "重庆酉阳-area.json")
+    assert len(data["features"]) == 7
+    names = {f["properties"]["name"] for f in data["features"]}
+    assert names == {"下腴", "平桥", "桂香", "龙沙", "清溪", "响水", "小河"}
 
 
 def test_changshan_l2_district_count(generated_tree):

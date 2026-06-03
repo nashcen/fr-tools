@@ -79,6 +79,7 @@ fr-tools/
 | `农业基地_v7.3_GCJ02_L3` | `农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py` | `data/sink/农业基地_v7.3_GCJ02_L3/` | `python3 scripts/versions/农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py` | `pytest "tests/test_all_versions.py::test_generate_matches_golden_manifest[农业基地_v7.3_GCJ02_L3]" -v` | 同 v7.2 形态（约 140 json）|
 | `农业基地_v7.4_GCJ02_L3_SingleMap` | `农业基地_v7.4_GCJ02_L3_SingleMap/geojson_generate_from_kml.py`（同 `active/`）| `data/sink/农业基地_v7.4_GCJ02_L3_SingleMap/` | `python3 scripts/active/geojson_generate_from_kml.py` | `pytest "tests/test_all_versions.py::test_generate_matches_golden_manifest[农业基地_v7.4_GCJ02_L3_SingleMap]" -v` | L3 树、无 legacy（约 136 json）|
 
+| 仅重庆酉阳（v7.0，不改 CS/WS/BS） | `./scripts/ops/generate_youyang_v70.sh` | 写 `农业基地_GCJ02_YY.json`；`GEOJSON_BASES=重庆酉阳` |
 | 运维 / 补救（非主生成路径） | 脚本 | 说明 |
 |----------------------------|------|------|
 | v7.1 从旧合并 json 拆分 | `versions/农业基地_v7.1_…/geojson_fix_area_point_split.py` | 仅修已有文件；新生成请用上表 `geojson_generate_from_kml.py` |

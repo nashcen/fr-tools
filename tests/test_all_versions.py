@@ -67,6 +67,14 @@ def test_v70_only_legacy_merged_json(sink_all_versions: Path):
     assert not (out / "农业基地").exists()
 
 
+def test_v70_youyang_legacy_has_districts(sink_all_versions: Path):
+    import json
+
+    out = sink_version_dir(sink_all_versions, "农业基地_v7.0_GCJ02_Polygon")
+    data = json.loads((out / "农业基地_GCJ02_YY.json").read_text(encoding="utf-8"))
+    assert len(data["features"]) == 7
+
+
 def test_v71_only_flat_eight_files(sink_all_versions: Path):
     out = sink_version_dir(sink_all_versions, "农业基地_v7.1_GCJ02_MultiPolygon")
     names = sorted(p.name for p in out.glob("农业基地_GCJ02_*.json"))

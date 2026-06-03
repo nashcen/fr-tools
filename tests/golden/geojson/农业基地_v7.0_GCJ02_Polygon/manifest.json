@@ -26,10 +26,12 @@
       "structure_sha256": "0a97d4ee978ab041e152c607bf210964c282e6741303429e3a06cfa987add528"
     },
     "农业基地_GCJ02_YY.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "a4351b6f4488414de59b6950bee5c7e23705f2f7b71748f33e69d09d16ce3efe"
+      "feature_count": 7,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 12940,
+      "structure_sha256": "d8fb7b20cb7a22f528471fb2f272b5f2797b7a4ad384c7e2cc267f25d13074ff"
     }
   }
 }

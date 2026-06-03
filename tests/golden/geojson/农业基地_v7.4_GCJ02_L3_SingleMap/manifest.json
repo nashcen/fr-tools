@@ -1073,33 +1073,150 @@
       "coord_points": 24,
       "structure_sha256": "57bb59e60f38e84b666c8cb0545bfa2066354e1ae4c4b26a43b6d1d8fbb8f7c3"
     },
-    "农业基地/重庆酉阳-area.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "d00ae72a6f45070ba7f94f27716bc9b9effbec8cf34b875cab28fd251261c3e1"
-    },
-    "农业基地/重庆酉阳-point.json": {
-      "feature_count": 0,
-      "geometry_types": [],
-      "coord_points": 0,
-      "structure_sha256": "5fce58bac15578d6f29c75c28d371275d55b8d10df93ae76b8e764f97108663a"
-    },
-    "农业基地-area.json": {
-      "feature_count": 3,
+    "农业基地/重庆酉阳/下腴-area.json": {
+      "feature_count": 1,
       "geometry_types": [
         "MultiPolygon"
       ],
-      "coord_points": 106229,
-      "structure_sha256": "26743515e63e8b928da4403d95004571b6d950d375f83fb407d6c2f6fdb49794"
+      "coord_points": 602,
+      "structure_sha256": "a25aab91d7731dc8f4ac5391aeec76d641aeb9462dc80a0b3e0b3614e9fa06d0"
     },
-    "农业基地-point.json": {
+    "农业基地/重庆酉阳/下腴-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "b01d1467c9d3c60a39c559156349ff72de9df22264bb121f7878f01d8da9f749"
+    },
+    "农业基地/重庆酉阳/响水-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 4647,
+      "structure_sha256": "57a89def199948784a28d965feff95a46b469342bc03b2f028e7b33455c4b991"
+    },
+    "农业基地/重庆酉阳/响水-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "43f161ea4556339726373c6634136eaccb16baefec3fa68b11d8117feac633cc"
+    },
+    "农业基地/重庆酉阳/小河-area.json": {
+      "feature_count": 3,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "coord_points": 3536,
+      "structure_sha256": "264e475808fa8d31c126475c7ce46f20888873ef43f7fa7be2b8a4bab893fb87"
+    },
+    "农业基地/重庆酉阳/小河-point.json": {
       "feature_count": 3,
       "geometry_types": [
         "Point"
       ],
       "coord_points": 3,
-      "structure_sha256": "36718b1a2b8138b3a74b04214884f0c8d66e17054ac4acbe74a9dd6dd6c2da8e"
+      "structure_sha256": "da9b2f5328a59be3e05a0c0d4932adceb22582a45f83349d44443020739172d0"
+    },
+    "农业基地/重庆酉阳/平桥-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 105,
+      "structure_sha256": "a7bf2ba749a0776544c5437a16fd2120cdb9823363d6d629dfe60a0cefc139fb"
+    },
+    "农业基地/重庆酉阳/平桥-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "aec0c00bbb0ac47a70d2b77e16b43b058c648f4d26ff834f1a1e7c4ce260ebe0"
+    },
+    "农业基地/重庆酉阳/桂香-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 569,
+      "structure_sha256": "096bb91080a144f6387417b92deab418637487238a71b3bba45f953b255e605e"
+    },
+    "农业基地/重庆酉阳/桂香-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "e617d8eb4e29a6c7dd2af668436d4c427d08651de0742b2440ebdf33b21aa4e6"
+    },
+    "农业基地/重庆酉阳/清溪-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 3177,
+      "structure_sha256": "5156a7fffc75916994f40fb4e3ec51f5c62b6f7fae37d414d9347d331fd3474a"
+    },
+    "农业基地/重庆酉阳/清溪-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "ff6b4540e3e2fca3d0b75eafdcd60af79a6e2eb7968f4ba6f278ae1c17cafd62"
+    },
+    "农业基地/重庆酉阳/龙沙-area.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Polygon"
+      ],
+      "coord_points": 304,
+      "structure_sha256": "1caf6bc2a4fcd7ccf9fbe75c5efffd73f7e26e295dbc28cfae20b8f061cc16d6"
+    },
+    "农业基地/重庆酉阳/龙沙-point.json": {
+      "feature_count": 1,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 1,
+      "structure_sha256": "18895b24d72f5186c6f78967461dab2611f15425bc3b36f262cfd1870c609f1f"
+    },
+    "农业基地/重庆酉阳-area.json": {
+      "feature_count": 7,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 12940,
+      "structure_sha256": "75af62cd07e6744cd9ab435f22008e25628edf32974e810fe17b950673d2ed01"
+    },
+    "农业基地/重庆酉阳-point.json": {
+      "feature_count": 7,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 7,
+      "structure_sha256": "85ff9606848f022dc6ab8bb27cd0967245d985328efcc7a5ce4bb57886fb2901"
+    },
+    "农业基地-area.json": {
+      "feature_count": 4,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "coord_points": 118931,
+      "structure_sha256": "4a40b62d7a452281c6df71533b19751bdf17e1c9a21cdd1571238582ae8351ca"
+    },
+    "农业基地-point.json": {
+      "feature_count": 4,
+      "geometry_types": [
+        "Point"
+      ],
+      "coord_points": 4,
+      "structure_sha256": "6ba5bdeb7ca49848550494bce2a33a3767877a122eba79dfbfd8bfe0bdc45454"
     }
   }
 }

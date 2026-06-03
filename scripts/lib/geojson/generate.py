@@ -16,9 +16,23 @@ from shapely.ops import orient, unary_union
 
 from lib import mysql_cli, settings
 from lib.coord_convert_wgs84_to_gcj02 import transform
-from lib.geojson import excel_hierarchy, kml_parser, plot_matching, writer
+from lib.geojson import excel_hierarchy, kml_parser, plot_matching, writer, youyang_kml
 from lib.geojson.kml_sources import BASE_SUFFIX, KML_FILES
 from lib.geojson.profiles import GeojsonVersionProfile
+
+
+def _active_bases() -> list[str]:
+    filt = settings.geojson_bases_filter()
+    if filt is None:
+        return list(BASE_SUFFIX.keys())
+    unknown = filt - set(BASE_SUFFIX)
+    if unknown:
+        raise ValueError(f"GEOJSON_BASES 未知基地: {', '.join(sorted(unknown))}")
+    return [b for b in BASE_SUFFIX if b in filt]
+
+
+def _bases_sql_in(bases: list[str]) -> str:
+    return ", ".join(f"'{b}'" for b in bases)
 
 
 def convert_coords(coords: list) -> list:
@@ -58,13 +72,13 @@ def _geoms_oriented(merged) -> list:
     ]
 
 
-def _load_db_district_map() -> dict:
+def _load_db_district_map(bases: list[str]) -> dict:
     if settings.skip_db():
         return {}
     rows = mysql_cli.query_rows(
         "SELECT 片区编号,基地名称,区域名称,片区编码,片区名称 "
         "FROM ods_ag_base_v2 "
-        "WHERE 基地名称 IN ('浙江常山','四川武胜','广西百色') "
+        f"WHERE 基地名称 IN ({_bases_sql_in(bases)}) "
         "ORDER BY 片区编号",
         5,
     )
@@ -78,13 +92,13 @@ def _load_db_district_map() -> dict:
     return db_map
 
 
-def _load_point_features(all_centroids: dict) -> list:
+def _load_point_features(all_centroids: dict, bases: list[str]) -> list:
     if settings.skip_db():
         return []
     rows = mysql_cli.query_rows(
         "SELECT 片区编号,基地名称,区域名称,片区编码,片区名称,片区经度,片区纬度 "
         "FROM ods_ag_base_v2 "
-        "WHERE 基地名称 IN ('浙江常山','四川武胜','广西百色') ORDER BY 片区编号",
+        f"WHERE 基地名称 IN ({_bases_sql_in(bases)}) ORDER BY 片区编号",
         7,
     )
     point_features = []
@@ -112,22 +126,53 @@ def _load_point_features(all_centroids: dict) -> list:
     return point_features
 
 
-def _collect_kml_polygons(kml_dir: Path):
+def _collect_kml_polygons(
+    kml_dir: Path,
+    excel_path: Path,
+    bases: list[str],
+):
     polys_by_district: dict = defaultdict(list)
     polys_by_plot_raw: dict = defaultdict(list)
+    youyang_contract_map: dict[str, set[str]] | None = None
+    youyang_districts: list[str] | None = None
 
     for label, cfg in KML_FILES.items():
+        base = cfg["base"]
+        if base not in bases:
+            continue
+
         fpath = kml_dir / cfg["file"]
         if not fpath.is_file():
             print(f"  ⚠ 文件不存在，跳过: {cfg['file']}")
             continue
 
         placemarks = kml_parser.parse_kml(str(fpath))
-        base = cfg["base"]
         depth = cfg["depth"]
         folder_map = cfg["map"]
 
-        if folder_map.get("__rebuild__"):
+        if folder_map.get("__youyang__"):
+            if youyang_contract_map is None:
+                youyang_contract_map = excel_hierarchy.load_youyang_contract_district_map(
+                    excel_path
+                )
+                hier = excel_hierarchy.load_excel_hierarchy(excel_path)
+                youyang_districts = excel_hierarchy.youyang_district_names(hier)
+            for pm in placemarks:
+                if not kml_parser.should_keep(pm):
+                    continue
+                contract = pm["path"][2].strip() if len(pm["path"]) > 2 else ""
+                district = youyang_kml.resolve_district(
+                    pm["name"],
+                    contract,
+                    youyang_contract_map,
+                    youyang_districts or [],
+                )
+                if not district:
+                    print(f"  ⚠ 未匹配片区: {pm['name']} ({contract})")
+                    continue
+                polys_by_district[(base, district)].append(pm["coords"])
+                polys_by_plot_raw[(base, district)].append((pm["name"], pm["coords"]))
+        elif folder_map.get("__rebuild__"):
             for pm in placemarks:
                 if not kml_parser.should_keep(pm):
                     continue
@@ -162,12 +207,17 @@ def generate(profile: GeojsonVersionProfile) -> None:
     excel_path = settings.excel_path()
     gcj02_dir = settings.geojson_output_dir(profile.version_dir)
     geo_v2_dir = settings.geojson_wgs84_dir()
+    bases = _active_bases()
 
     print(f"版本: {profile.version_dir}")
     print(f"输出: {gcj02_dir}")
+    if settings.geojson_bases_filter():
+        print(f"基地过滤: {', '.join(bases)}（其余基地 KML/输出不处理）")
 
-    db_map = _load_db_district_map()
-    polys_by_district, polys_by_plot_raw = _collect_kml_polygons(kml_dir)
+    db_map = _load_db_district_map(bases)
+    polys_by_district, polys_by_plot_raw = _collect_kml_polygons(
+        kml_dir, excel_path, bases
+    )
 
     area_features = []
     all_centroids = {}
@@ -249,7 +299,7 @@ def generate(profile: GeojsonVersionProfile) -> None:
 
     print("\n步骤 3.6: 生成基地级 GeoJSON features...")
     base_features = []
-    for base in BASE_SUFFIX:
+    for base in bases:
         base_area = [f for f in area_features if f["properties"]["基地名称"] == base]
         if not base_area:
             continue
@@ -291,11 +341,13 @@ def generate(profile: GeojsonVersionProfile) -> None:
         )
         print(f"  {base}: 1 基地 feature ({len(geoms)} 个多边形)")
 
-    point_features = _load_point_features(all_centroids)
+    point_features = _load_point_features(all_centroids, bases)
 
     if profile.write_l1_flat_per_base:
         print("\n步骤 5.1: 写出 v7.1 扁平 L1（*-area.json / *-point.json）...")
         for base, sfx in BASE_SUFFIX.items():
+            if base not in bases:
+                continue
             stem = f"农业基地_GCJ02_{sfx}"
             feats_area = [
                 writer.v3_area_feature(f)
@@ -319,6 +371,8 @@ def generate(profile: GeojsonVersionProfile) -> None:
 
     if profile.write_legacy_merged:
         for base, sfx in BASE_SUFFIX.items():
+            if base not in bases:
+                continue
             feats_area = [
                 writer.v3_area_feature(f)
                 for f in area_features
@@ -364,7 +418,7 @@ def generate(profile: GeojsonVersionProfile) -> None:
         )
 
         level2_dir = gcj02_dir / "农业基地"
-        for base in BASE_SUFFIX:
+        for base in bases:
             pq_feats = [
                 f for f in area_features if f["properties"]["基地名称"] == base
             ]
@@ -430,7 +484,7 @@ def generate(profile: GeojsonVersionProfile) -> None:
                     ],
                 )
 
-    if profile.write_v2_wgs84_sidecar:
+    if profile.write_v2_wgs84_sidecar and settings.geojson_bases_filter() is None:
         writer.write_geojson(geo_v2_dir / "农业基地_v2.json", area_features)
         writer.write_geojson(geo_v2_dir / "农业基地_v2-area.json", area_features)
         writer.write_geojson(geo_v2_dir / "农业基地_v2-point.json", point_features)
@@ -443,6 +497,8 @@ def generate(profile: GeojsonVersionProfile) -> None:
                 geo_v2_dir / f"农业基地_v2_{sfx}-point.json",
                 [f for f in point_features if f["properties"]["基地名称"] == base],
             )
+    elif profile.write_v2_wgs84_sidecar:
+        print("\n  ⊘ 跳过 v2 sidecar（GEOJSON_BASES 已限定基地）")
 
     if profile.update_db_coordinates and not settings.skip_db_update():
         lng_cases, lat_cases, ids = [], [], []

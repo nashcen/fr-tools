@@ -112,6 +112,15 @@ def geojson_version_name() -> str:
     return os.environ.get("GEOJSON_VERSION", "农业基地_v7.4_GCJ02_L3_SingleMap")
 
 
+def geojson_bases_filter() -> frozenset[str] | None:
+    """若设置 GEOJSON_BASES（逗号分隔基地名），仅处理列出的基地，如 重庆酉阳。"""
+    _boot()
+    raw = os.environ.get("GEOJSON_BASES", "").strip()
+    if not raw:
+        return None
+    return frozenset(part.strip() for part in raw.split(",") if part.strip())
+
+
 def geojson_output_dir(version: str | None = None) -> Path:
     """生成输出目录：默认 data/sink/{版本}。"""
     _boot()

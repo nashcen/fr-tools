@@ -29,10 +29,17 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="GeoJSON 目录名，如 农业基地_v7.4_GCJ02_L3_SingleMap",
     )
+    parser.add_argument(
+        "--bases",
+        default=None,
+        help="仅处理指定基地（逗号分隔），如 重庆酉阳",
+    )
     args = parser.parse_args(argv)
 
     version = args.version or settings.geojson_version_name()
     os.environ.setdefault("GEOJSON_VERSION", version)
+    if args.bases:
+        os.environ["GEOJSON_BASES"] = args.bases
 
     try:
         profile = get_profile(version)

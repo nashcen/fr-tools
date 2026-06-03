@@ -114,6 +114,12 @@ KML_FILES: dict = {
         "depth": 1,
         "map": {"平林": "平林", "龙细": "龙细"},
     },
+    "重庆酉阳": {
+        "file": "4.酉阳地图KML/酉阳地图KML导出_20260602130151.kml",
+        "base": "重庆酉阳",
+        "depth": None,
+        "map": {"__youyang__": True},
+    },
 }
 
 BASE_SUFFIX = {
