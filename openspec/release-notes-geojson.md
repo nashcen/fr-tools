@@ -14,76 +14,15 @@
 | `农业基地_v6.0_TEST` | GCJ-02 | Polygon | 1 | 常山 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
 | `农业基地_v6.9_WGS84_Polygon` | WGS-84 | Polygon | 1 | 4 | 旧式 | — | ❌ 废弃 |
 | `农业基地_v7.0_GCJ02_Polygon` | GCJ-02 | Polygon | 1 | 4 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
-| `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | **生产基线（验收通过）** |
-| `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 3+空 | 目录层级 L2 | — | 🔧 验证中 |
+| `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | 封板可用（L1，可回退）|
+| `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 3+空 | 目录层级 L2 | ✅ FROZEN | **生产基线（验收通过）** |
 | `农业基地_v7.3_GCJ02_L3` | GCJ-02 | MultiPolygon | **3** | 4 | 基地/片区/地块 | — | 🔧 开发中 |
 
-> ⛔ 封板目录禁止修改，见 `CLAUDE.md`。v7.1 **禁止**无后缀 `农业基地_GCJ02_XX.json`。
+> ⛔ 封板目录禁止修改，见 `CLAUDE.md`（**8** 项）。v7.1 / v7.2 **禁止**无后缀 `农业基地_GCJ02_XX.json`。
 
 ---
 
 ## 🔧 开发版本
-
-### `农业基地_v7.2_GCJ02_MP_L2` — 两层级（L2）
-
-| 项 | 值 |
-|----|-----|
-| 命名 | `MP` = MultiPolygon；`L2` = 基地 + 片区 两层（类比 `world/中国` → `中国/浙江省`）|
-| 目标 | 验证 FR「地图配置」中 **省/市式** 目录导航；大屏四图各绑 **层级2** 片区文件 |
-| 坐标系 | GCJ-02 |
-| 对应 FVS | `Agriculture_v7.2_GCJ02_MP_L2.fvs` |
-| 生成脚本 | `scripts/active/geojson_generate_from_kml.py`（`GCJ02_DIR` 指向本目录）|
-
-**目录结构（对照 `world/中国`）：**
-
-| FR 内置 | v7.2 农业 |
-|---------|-----------|
-| `中国-area.json` | `农业基地-area.json` |
-| `中国-point.json` | `农业基地-point.json` |
-| `中国/浙江省-area.json` | `农业基地/浙江常山-area.json` |
-| `中国/浙江省-point.json` | `农业基地/浙江常山-point.json` |
-
-**目录树（封板前约定，仅 L2，不含地块 L3 子目录）：**
-
-```
-农业基地_v7.2_GCJ02_MP_L2/
-  农业基地-area.json          ← L1：3 个基地 MultiPolygon（酉阳无 KML）
-  农业基地-point.json
-  农业基地/
-    浙江常山-area.json        ← L2：24 片区
-    浙江常山-point.json
-    四川武胜-area.json        ← 37 片区
-    四川武胜-point.json
-    广西百色-area.json        ← 2 片区
-    广西百色-point.json
-    重庆酉阳-area.json        ← 0
-    重庆酉阳-point.json
-```
-
-**各层关键信息表：**
-
-| 层级 | 文件 | 顶层 `name` | features | 几何 |
-|------|------|-------------|----------|------|
-| L1 基地 | `农业基地-area.json` | `农业基地` | 3 | MultiPolygon |
-| L1 点 | `农业基地-point.json` | 无 | 3 | Point |
-| L2 常山 | `农业基地/浙江常山-area.json` | `浙江常山` | 24 | MultiPolygon |
-| L2 武胜 | `农业基地/四川武胜-area.json` | `四川武胜` | 37 | MultiPolygon |
-| L2 百色 | `农业基地/广西百色-area.json` | `广西百色` | 2 | MultiPolygon |
-| L2 酉阳 | `农业基地/重庆酉阳-area.json` | `重庆酉阳` | 0 | — |
-
-**与 v7.1 差异：**
-
-| 维度 | v7.1（封板）| v7.2 L2 |
-|------|-------------|---------|
-| 结构 | 扁平 `农业基地_GCJ02_CS-area.json` | `农业基地/浙江常山-area.json` |
-| FR 地图配置 | 单层文件列表 | 两层目录（省/市）|
-| 地块 L3 | 无 | 本版本不含（见 v7.3）|
-
-**禁止：** 无后缀 `农业基地_GCJ02_{基地}.json`（点地图异常，同 v7.1）。
-
-**待验证：** FR「同步地理文件」后 L1/L2 导航；四基地 FVS 片区渲染。
-
----
 
 ### `农业基地_v7.3_GCJ02_L3`
 
@@ -125,7 +64,7 @@
 | 封板日期 | 2026-06-03 |
 | 验收 | ✅ area/point 分离、FR 地图配置、点地图、四基地大屏预览通过 |
 | 对应 FVS | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` |
-| 定位 | **当前唯一推荐生产版本**；v7.2/v7.3 不得替代 |
+| 定位 | L1 扁平 — **封板**（可回退；生产推荐 **v7.2**）|
 
 | 基地 | area 文件 | 片区数 | point 数 |
 |------|-----------|--------|----------|
@@ -135,6 +74,48 @@
 | YY | `农业基地_GCJ02_YY-area.json` | 0 | 0 |
 
 仅 8 个 `*-area.json` / `*-point.json`，禁止无后缀 `.json`。
+
+---
+
+### `农业基地_v7.2_GCJ02_MP_L2` — FROZEN（生产基线）
+
+| 项 | 值 |
+|----|-----|
+| 封板日期 | 2026-06-03 |
+| 验收 | ✅ L1/L2 目录、FR 地图配置、四基地大屏通过 |
+| 对应 FVS | `Agriculture_v7.2_GCJ02_MP_L2.fvs` |
+| 生成脚本 | `scripts/active/geojson_generate_from_kml.py`（`GCJ02_DIR` 指向本目录）|
+| 定位 | **当前生产版本**（省/市式 L2，无 L3 地块子目录）|
+
+**目录结构（对照 `world/中国`）：**
+
+| FR 内置 | v7.2 农业 |
+|---------|-----------|
+| `中国-area.json` | `农业基地-area.json` |
+| `中国-point.json` | `农业基地-point.json` |
+| `中国/浙江省-area.json` | `农业基地/浙江常山-area.json` |
+| `中国/浙江省-point.json` | `农业基地/浙江常山-point.json` |
+
+```
+农业基地_v7.2_GCJ02_MP_L2/
+  农业基地-area.json          ← L1：3 基地（酉阳无 KML）
+  农业基地-point.json
+  农业基地/
+    浙江常山-area.json        ← L2：24 片区
+    浙江常山-point.json
+    四川武胜-area.json        ← 37 片区
+    …（百色 2、酉阳 0）
+```
+
+| 层级 | 文件 | features | 几何 |
+|------|------|----------|------|
+| L1 | `农业基地-area.json` | 3 | MultiPolygon |
+| L2 常山 | `农业基地/浙江常山-area.json` | 24 | MultiPolygon |
+| L2 武胜 | `农业基地/四川武胜-area.json` | 37 | MultiPolygon |
+| L2 百色 | `农业基地/广西百色-area.json` | 2 | MultiPolygon |
+| L2 酉阳 | `农业基地/重庆酉阳-area.json` | 0 | — |
+
+**与 v7.1：** 扁平 `农业基地_GCJ02_CS-area.json` → L2 `农业基地/浙江常山-area.json`。
 
 ---
 
@@ -166,3 +147,4 @@
 | 2026-06-03 | v7.0 | 抽检；删除 CS_test |
 | 2026-06-03 | v7.1 | 验收通过并封板（生产基线） |
 | 2026-06-03 | v7.2 | 重命名为 `GCJ02_MP_L2`；部署 L2 目录树；FVS geourl 指向 `农业基地/{基地}-area.json` |
+| 2026-06-03 | v7.2 | 验收通过并封板（生产基线） |

@@ -1,9 +1,10 @@
 # 规范：农业大屏核心功能
 
 **规范 ID：** `bigscreen`  
-**版本：** v7.1（2026-06-03，生产封板）  
+**版本：** v7.2（2026-06-03，生产封板）  
 **状态：** 生效中  
-**生产 FVS / GeoJSON：** `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` ↔ `农业基地_v7.1_GCJ02_MultiPolygon/`（验收通过，见 `release-notes-fvs.md`）
+**生产 FVS / GeoJSON：** `Agriculture_v7.2_GCJ02_MP_L2.fvs` ↔ `农业基地_v7.2_GCJ02_MP_L2/`（L2，geourl `农业基地/{基地名}-area.json`，见 `release-notes-fvs.md`）  
+**封板回退：** v7.1 扁平 L1 仍可用
 
 ---
 

@@ -40,7 +40,7 @@ scripts/
 | `_archive/` | `v2_WGS84` 等 | — | — | 旧 FR 兼容 |
 | `农业基地_v7.0_GCJ02_Polygon/` | 同名 | `Agriculture_v7.0_GCJ02_Polygon.fvs` | ✅ | `geojson_generate_from_kml.py` |
 | `农业基地_v7.1_GCJ02_MultiPolygon/` | 同名 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | ✅ | `geojson_fix_area_point_split.py` |
-| `农业基地_v7.2_GCJ02_MP_L2/` | 同名 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | — | `geojson_generate_from_kml.py` |
+| `农业基地_v7.2_GCJ02_MP_L2/` | 同名 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | ✅ | `geojson_generate_from_kml.py` |
 | `农业基地_v7.3_GCJ02_L3/` | 同名 | `Agriculture_v7.3_GCJ02_L3.fvs` | — | `geojson_generate_from_kml.py` |
 
 ---
@@ -91,7 +91,7 @@ python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_fix_area_p
 
 ---
 
-## `农业基地_v7.2_GCJ02_MP_L2/` — L2 验证
+## `农业基地_v7.2_GCJ02_MP_L2/` — 封板（生产）
 
 | 项 | 值 |
 |----|-----|

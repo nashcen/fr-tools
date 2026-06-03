@@ -17,7 +17,7 @@ GeoJSON 文件和 FVS 文件存在以下混乱：
 
 ## 提案方案
 
-1. **封板基准版本**：v6.0 / v7.0 / **v7.1** 封板，建立 3 次确认保护机制
+1. **封板基准版本**：v6.0 / v7.0 / v7.1 / **v7.2** 封板（**8** 项 FROZEN），建立 3 次确认保护机制
 2. **统一 FVS 目录**：所有 FVS 统一管理于 `5.农业大屏二期/`，与 GeoJSON 版本一一对应命名
 3. **建立 release notes**：`release-notes-geojson.md` + `release-notes-fvs.md` 记录每个版本的 feature/bug/geourl 有效性/可用性
 4. **清理陈旧文档**：删除根目录非 openspec 管理的历史文档
@@ -26,7 +26,7 @@ GeoJSON 文件和 FVS 文件存在以下混乱：
 ## 范围
 
 ### In Scope
-- `CLAUDE.md` 封板保护规则（6 项 FROZEN 文件，3 次确认机制）
+- `CLAUDE.md` 封板保护规则（**8** 项 FROZEN：含 v7.1 + v7.2，3 次确认机制）
 - `openspec/release-notes-geojson.md`（GeoJSON 版本台账）
 - `openspec/release-notes-fvs.md`（FVS 版本台账，含 geourl 有效性诊断）
 - `openspec/specs/geojson.md` 补充版本目录命名规范
@@ -61,14 +61,14 @@ FVS 与 GeoJSON **一一对应命名**，6 个版本：
 | `v6.9_WGS84_Polygon` | — | ❌ | 🔧 待修复（geourl 含 `world/` + 目录名错）|
 | `v7.0_GCJ02_Polygon` | ✅ FROZEN | ✅ | ✅ 可用（四基地）|
 | `v7.1_GCJ02_MultiPolygon` | ✅ FROZEN | ✅ | ✅ **生产基线**（2026-06-03 验收通过并封板）|
-| `v7.2_GCJ02_MP_L2` | — | ✅ | 🔧 L2 验证中（geourl 已对齐两层目录）|
+| `v7.2_GCJ02_MP_L2` | ✅ FROZEN | ✅ | ✅ **生产基线**（2026-06-03 验收通过并封板）|
 | `v7.3_GCJ02_L3` | — | ❌ | 🔧 待修复（geourl 结构需改为三层格式）|
 
 **共同根因（非封板版本）：** geourl 含错误 `world/` 前缀，且目录名使用了已不存在的旧路径 `农业基地_v3_GCJ02/`
 
 ## 成功标准
 
-- [x] CLAUDE.md 封板保护建立（6 项 FROZEN，含 v7.1，3 次确认）
+- [x] CLAUDE.md 封板保护建立（8 项 FROZEN，含 v7.1 + v7.2，3 次确认）
 - [x] release-notes-geojson.md 建立（所有版本记录完整）
 - [x] release-notes-fvs.md 建立（含 geourl 有效性诊断）
 - [x] 根目录陈旧文档清理（6 份已删除）

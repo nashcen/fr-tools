@@ -8,7 +8,8 @@
 
 - [x] 创建 `CLAUDE.md`，封板文件 + 3 次确认保护规则
 - [x] 确认封板绑定（v6.0 / v7.0 / **v7.1** ↔ 对应 GeoJSON 目录）
-- [x] v7.1 验收通过并封板（2026-06-03 生产基线，`CLAUDE.md` 6 项 FROZEN）
+- [x] v7.1 验收通过并封板（2026-06-03，`CLAUDE.md` 6 项 FROZEN）
+- [x] v7.2 验收通过并封板（2026-06-03 生产基线，`CLAUDE.md` 8 项 FROZEN）
 - [x] 创建 `openspec/release-notes-geojson.md`（所有版本记录、封板标注、问题诊断）
 - [x] 创建 `openspec/release-notes-fvs.md`（所有版本记录、geourl 有效性检查、封板标注）
 - [x] 清理根目录陈旧文档（删除 6 份：大屏分析报告、GeoJSON格式说明、ods 工作文档、claude-mem-setup）
@@ -37,7 +38,7 @@
   - [x] 更新 release-notes-fvs.md（geourl 表格台账）
 
 - [x] 1.3 `Agriculture_v7.2_GCJ02_MP_L2.fvs` — geourl 指向 L2 `农业基地/{基地名}-area.json`（2026-06-03）
-  - [ ] FR 地图配置 L1/L2 树 + 大屏验收
+  - [x] FR 地图配置 L1/L2 树 + 大屏验收（2026-06-03 封板）
   - [x] release-notes-fvs.md / release-notes-geojson.md
 
 - [ ] 1.4 修复 `Agriculture_v7.3_GCJ02_L3.fvs`
@@ -59,7 +60,7 @@
   - [x] release-notes-geojson.md 表格化关键信息
 
 - [x] 2.2 部署 `农业基地_v7.2_GCJ02_MP_L2/` L2 目录树（10 个 json，无 L3 子目录）
-  - [ ] FR「同步地理文件」+ 地图配置验收
+  - [x] FR「同步地理文件」+ 地图配置验收（2026-06-03 封板）
   - [x] release-notes-geojson.md
 
 - [ ] 2.3 验证 `农业基地_v7.3_GCJ02_L3/`

@@ -9,7 +9,7 @@ versions/
   _archive/                             # 已废弃
   农业基地_v7.0_GCJ02_Polygon/
   农业基地_v7.1_GCJ02_MultiPolygon/     # 封板
-  农业基地_v7.2_GCJ02_MP_L2/            # L2 验证中
+  农业基地_v7.2_GCJ02_MP_L2/            # 封板（生产 L2）
   农业基地_v7.3_GCJ02_L3/              # L3 开发中
 ```
 

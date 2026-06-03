@@ -73,7 +73,7 @@
 
 农业基地_v7.1_GCJ02_MultiPolygon/       ← v7.1 封板：扁平 L1，仅 -area/-point，禁止无后缀 .json
 
-农业基地_v7.2_GCJ02_MP_L2/             ← v7.2：L2 两层（类比 中国/浙江省）
+农业基地_v7.2_GCJ02_MP_L2/             ← v7.2 封板（生产）：L2 两层（类比 中国/浙江省）
   农业基地-area.json                    ← L1 基地
   农业基地-point.json
   农业基地/

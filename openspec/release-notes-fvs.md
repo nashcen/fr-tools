@@ -17,8 +17,8 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `Agriculture_v6.0_TEST.fvs` | `农业基地_v6.0_TEST` | ✅ | ✅ FROZEN | 封板可用 |
 | `Agriculture_v6.9_WGS84_Polygon.fvs` | `农业基地_v6.9_WGS84_Polygon` | ✅ | — | 手动修复，非生产 |
 | `Agriculture_v7.0_GCJ02_Polygon.fvs` | `农业基地_v7.0_GCJ02_Polygon` | ✅ | ✅ FROZEN | 封板可用 |
-| `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | `农业基地_v7.1_GCJ02_MultiPolygon` | ✅ | ✅ FROZEN | **生产基线（验收通过）** |
-| `Agriculture_v7.2_GCJ02_MP_L2.fvs` | `农业基地_v7.2_GCJ02_MP_L2` | ✅ | — | 🔧 L2 验证中 |
+| `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | `农业基地_v7.1_GCJ02_MultiPolygon` | ✅ | ✅ FROZEN | 封板可用（L1 扁平，可回退）|
+| `Agriculture_v7.2_GCJ02_MP_L2.fvs` | `农业基地_v7.2_GCJ02_MP_L2` | ✅ | ✅ FROZEN | **生产基线（L2，验收通过）** |
 | `Agriculture_v7.3_GCJ02_L3.fvs` | `农业基地_v7.3_GCJ02_L3` | ❌ | — | 🔧 待修复 |
 
 > ⛔ 封板版本禁止修改，见 `CLAUDE.md`。
@@ -90,7 +90,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | 验收 | ✅ 地图配置 + 大屏预览通过 |
 | GeoJSON 目录 | `农业基地_v7.1_GCJ02_MultiPolygon` |
 | 格式 | geourl → `*-area.json`；目录仅 `-area`/`-point`（**禁止无后缀 `.json`**）|
-| 定位 | **四基地 MultiPolygon — 当前唯一生产版本（验收通过，已封板）** |
+| 定位 | 四基地 MultiPolygon L1 扁平 — **封板**（可回退；生产推荐 **v7.2**）|
 
 **geourl 路径表：**
 
@@ -110,19 +110,18 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 
 ---
 
-## 🔧 开发 / 验证版本
-
-### `Agriculture_v7.2_GCJ02_MP_L2.fvs`
+### `Agriculture_v7.2_GCJ02_MP_L2.fvs` — FROZEN
 
 | 项 | 值 |
 |----|-----|
-| 命名 | `MP_L2` = MultiPolygon + **2 层层级**（基地/片区，类比省/市）|
-| 目标 | 验证 FR 地图配置两层目录 + 四基地大屏 geourl 绑 **L2** 片区文件 |
+| 封板日期 | 2026-06-03 |
+| 验收 | ✅ L1/L2 目录、FR 地图配置、四基地大屏预览通过 |
 | GeoJSON 目录 | `农业基地_v7.2_GCJ02_MP_L2` |
 | 层级 | L1 `农业基地-area.json`；L2 `农业基地/{基地名}-area.json` |
+| 定位 | **当前生产版本**（省/市式两层导航）|
 | 不含 | 地块 L3 子目录（见 v7.3）|
 
-**geourl 路径表（2026-06-03 已修正）：**
+**geourl 路径表：**
 
 | 组件名 | 基地 | geourl（相对 `WEB-INF/`）| 验证 |
 |--------|------|--------------------------|------|
@@ -133,14 +132,16 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 
 **与 v7.1 geourl 差异：**
 
-| 版本 | 常山 geourl 文件名 |
-|------|-------------------|
+| 版本 | 常山 geourl |
+|------|-------------|
 | v7.1 | `…/农业基地_GCJ02_CS-area.json`（扁平）|
-| v7.2 | `…/农业基地/浙江常山-area.json`（L2 目录）|
+| v7.2 | `…/农业基地/浙江常山-area.json`（L2）|
 
-**待验证：** FR「同步地理文件」后 L1→L2 树可见；大屏四基地渲染。
+**封板后已知限制（不修复）：** 酉阳 L2 为空；无地块 L3。
 
 ---
+
+## 🔧 开发 / 验证版本
 
 ### `Agriculture_v7.3_GCJ02_L3.fvs`
 
@@ -160,8 +161,8 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | 前缀 | `assets/map/geographic/农业基地-大疆测绘/{版本目录}/` |
 | 禁止 | 路径中含 `world/`（内置地图专用）|
 | v6 / v7.0 封板 | `{基地}.json` 无后缀（勿改）|
-| **v7.1 封板** | 必须 `{基地}-area.json`；目录内禁止无后缀 `.json`（点地图异常）|
-| v7.2 L2 | `农业基地/{基地名}-area.json`（两层目录）|
+| **v7.1 封板** | 扁平 `{基地码}-area.json`（如 `农业基地_GCJ02_CS-area.json`）|
+| **v7.2 封板** | L2：`农业基地/{基地名}-area.json`；禁止无后缀 `.json` |
 | v7.3 L3 | `农业基地-area.json` 入口 + 地块子目录 |
 
 **命名：**
@@ -186,6 +187,8 @@ Agriculture_v{版本}_{坐标系}_{几何描述}.fvs
 | 2026-06-03 | v7.1 geourl 定为 `*-area.json`；弃用无后缀合并 GeoJSON |
 | 2026-06-03 | 清理 v7.1 临时文件：FVS `.bak`/`.deprecated`；废弃目录 `农业基地_v7.1.1_GCJ02` |
 | 2026-06-03 | v7.2 更名为 `GCJ02_MP_L2`；部署 L2 GeoJSON；FVS geourl 指向 `农业基地/{基地}-area.json` |
+| 2026-06-03 | **v7.2 封板**（FROZEN）：验收通过，升为当前生产基线 |
+| 2026-06-03 | `CLAUDE.md` 封板项增至 **8**（含 v7.2 FVS + GeoJSON）|
 
 ---
 
