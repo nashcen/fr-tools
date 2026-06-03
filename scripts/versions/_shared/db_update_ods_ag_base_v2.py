@@ -24,17 +24,18 @@ ods_ag_base_v2 数据库更新脚本
 
 import os
 import re
-import subprocess
+import sys
 import zipfile
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from pathlib import Path
 
-# ─── 配置 ─────────────────────────────────────────────────────────────────────
+_SCRIPTS = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(_SCRIPTS.parent), str(_SCRIPTS)]
 
-_REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-EXCEL_PATH = os.path.join(_REPO_ROOT, 'data', '农业资产盘点明细.xlsx')
-DB = dict(host='172.17.4.4', port=3310, user='bigdata',
-          pwd='yxgbigdata@YXG321', db='yxg_bigscreen')
+from lib import mysql_cli, settings
+
+EXCEL_PATH = str(settings.excel_path())
 
 # 片区编号重新排序的基地顺序
 BASE_ORDER = {'CS0': 0, 'WS0': 1, 'BS0': 2, 'YY0': 3}
@@ -103,23 +104,16 @@ def _sf(row, h, key):
 # ─── DB 操作 ──────────────────────────────────────────────────────────────────
 
 def mysql_query(sql: str) -> list:
-    r = subprocess.run(
-        ['mysql', f'-h{DB["host"]}', f'-P{DB["port"]}', f'-u{DB["user"]}',
-         f'-p{DB["pwd"]}', DB['db'], '--batch', '--skip-column-names', '-e', sql],
-        capture_output=True, text=True, env=os.environ
-    )
-    return [l.split('\t') for l in r.stdout.strip().split('\n') if l]
+    return mysql_cli.query(sql)
 
 
 def mysql_exec(sql: str) -> bool:
-    r = subprocess.run(
-        ['mysql', f'-h{DB["host"]}', f'-P{DB["port"]}', f'-u{DB["user"]}',
-         f'-p{DB["pwd"]}', DB['db']],
-        input=sql, capture_output=True, text=True, env=os.environ
-    )
-    if r.returncode != 0:
-        print(f'  SQL ERROR: {r.stderr[:300]}')
-    return r.returncode == 0
+    try:
+        mysql_cli.execute(sql)
+        return True
+    except RuntimeError as exc:
+        print(f'  SQL ERROR: {str(exc)[:300]}')
+        return False
 
 
 # ─── 主逻辑 ───────────────────────────────────────────────────────────────────

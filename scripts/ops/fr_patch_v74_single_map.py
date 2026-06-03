@@ -12,13 +12,17 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import sys
 import zipfile
 from datetime import datetime
+from pathlib import Path
 
-FVS_PATH = (
-    "/Applications/FineReport/webapps/webroot/WEB-INF/reportlets/"
-    "YXG-项目/5.农业大屏二期/Agriculture_v7.4_GCJ02_L3_SingleMap.fvs"
-)
+_SCRIPTS = Path(__file__).resolve().parent.parent
+sys.path[:0] = [str(_SCRIPTS.parent), str(_SCRIPTS)]
+
+from lib.fr_paths import fvs_path
+
+FVS_PATH = str(fvs_path("Agriculture_v7.4_GCJ02_L3_SingleMap.fvs"))
 
 CHART_MAIN = "bf4df8fc-b8bf-4855-8bf0-778a72e46bff.chart"
 

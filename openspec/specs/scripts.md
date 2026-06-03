@@ -82,25 +82,31 @@ fr_{动作}.sh
 
 ---
 
-## 四、配置常量命名（代码内）
+## 四、配置（.env，禁止硬编码）
 
-| 常量 | 含义 |
+仓库根目录 `.env`（模板 `.env.example`，不入 Git）：
+
+| 变量 | 含义 |
 |------|------|
-| `KML_DIR` | KML 源目录 |
-| `GEOJSON_DIR` / `GCJ02_DIR` | 输出 GeoJSON 目录（逐步统一为 `GEOJSON_DIR`）|
-| `EXCEL_PATH` | 农业资产盘点明细 |
-| `DB` | MySQL 连接 dict |
+| `FINEREPORT_WEBINF` | FineReport `WEB-INF` 根路径 |
+| `GEOJSON_VERSION` | 输出目录名（与 `versions/` 子目录一致）|
+| `GEOJSON_OUTPUT_DIR` | 可选覆盖输出路径 |
+| `GEOJSON_PROTECT_EXISTING` | 保护封板目录已有 `.json` |
+| `MYSQL_*` | 数据库连接（密码仅 `.env`）|
 
-`GCJ02_DIR` 在快照中必须指向对应 `versions/` 目录名的部署路径。
+代码通过 `scripts/lib/settings.py` 读取；版本差异见 `scripts/lib/geojson/profiles.py`。
 
 ---
 
 ## 五、依赖关系
 
 ```
-geojson_generate_from_kml.py
-geojson_patch_missing_from_kml.py  → importlib 加载 lib/coord_convert_wgs84_to_gcj02.py
+active/geojson_generate_from_kml.py  → lib/geojson/cli.py → lib/geojson/generate.py
+versions/{版本}/geojson_generate_from_kml.py  → lib/version_entry.py（仅设 GEOJSON_VERSION）
+geojson_patch_missing_from_kml.py  → lib/settings + lib/coord_convert_wgs84_to_gcj02
 ```
+
+测试：`pytest`；golden 结构见 `tests/golden/geojson/{版本}/manifest.json`。
 
 ---
 
@@ -110,3 +116,4 @@ geojson_patch_missing_from_kml.py  → importlib 加载 lib/coord_convert_wgs84_
 |------|------|
 | 2026-06-03 | v1.0：废除 `01_`~`05_` 编号；`active/lib/ops/versions` 结构；版本目录与 GeoJSON 目录同名 |
 | 2026-06-03 | v1.1：迁移至 `fr-tools`，规范路径 `scripts/`；`KML_DIR` / `EXCEL_PATH` 默认 `data/` |
+| 2026-06-03 | v1.2：`.env` 配置、`lib/geojson` 复用、版本 profiles、pytest 结构校验 |

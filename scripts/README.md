@@ -1,53 +1,60 @@
 # 农业大屏 — 开发脚本
 
 **规范全文：** `openspec/specs/scripts.md`  
-**版本台账：** `openspec/release-notes-scripts.md`  
-**仓库：** `fr-tools`（自 P2025-G-001 全量目录迁移，路径已扁平化）
+**版本台账：** `openspec/release-notes-scripts.md`
+
+## 配置（.env）
+
+复制 `.env.example` → `.env`，填写 `MYSQL_PASSWORD` 与 `FINEREPORT_WEBINF`。**禁止**在代码中硬编码密码或机器路径。
+
+| 变量 | 含义 |
+|------|------|
+| `GEOJSON_VERSION` | 输出版本目录名（默认 `农业基地_v7.4_GCJ02_L3_SingleMap`）|
+| `GEOJSON_OUTPUT_DIR` | 可选，覆盖完整输出路径（测试用）|
+| `GEOJSON_PROTECT_EXISTING` | `1` 时跳过已存在的 `.json`（保护封板 GeoJSON）|
+| `GEOJSON_SKIP_DB` | `1` 离线生成，不查库、不写库 |
+| `KML_DIR` / `EXCEL_PATH` | 默认 `data/` 下路径 |
 
 ## 目录
 
 | 路径 | 用途 |
 |------|------|
-| `active/` | 当前迭代唯一入口（日常只改这里）|
-| `lib/` | 共享 Python 模块（被 import）|
-| `ops/` | FineReport 本地运维 Shell |
-| `versions/` | 与 GeoJSON 目录同名的版本快照 |
-
-## 数据输入（本仓）
-
-| 常量 / 用途 | 路径 |
-|-------------|------|
-| `KML_DIR` | `data/1.农业基地KML/` |
-| `EXCEL_PATH` | `data/农业资产盘点明细.xlsx` |
-| `GCJ02_DIR` | FineReport 部署目录（见 `active/geojson_generate_from_kml.py`）|
+| `active/` | 当前迭代入口（调用 `lib/geojson`）|
+| `lib/` | 共享模块：`settings`、`mysql_cli`、`geojson/*` |
+| `lib/geojson/profiles.py` | **各版本输出差异**（L3 / 是否写 legacy 合并 json 等）|
+| `ops/` | FineReport 运维脚本 |
+| `versions/{GeoJSON目录名}/` | **版本入口**（薄封装，逻辑在 `lib`）|
 
 ## 常用命令
 
 ```bash
-# 生成 GeoJSON（活跃；输出至脚本内 GCJ02_DIR，当前为 v7.2）
+# 生产 v7.4（读 .env，不覆盖已有 json）
 python3 scripts/active/geojson_generate_from_kml.py
 
-# 封板 v7.1 修复（勿改 FineReport 封板目录，仅复跑快照脚本）
-python3 scripts/versions/农业基地_v7.1_GCJ02_MultiPolygon/geojson_fix_area_point_split.py
+# 指定封板版本（四图 v7.3）
+python3 scripts/versions/农业基地_v7.3_GCJ02_L3/geojson_generate_from_kml.py
 
-# 坐标转换（lib 模块，可被其他脚本加载）
-python3 scripts/lib/coord_convert_wgs84_to_gcj02.py
+# 离线写入临时目录
+GEOJSON_OUTPUT_DIR=/tmp/geo-out GEOJSON_PROTECT_EXISTING=0 GEOJSON_SKIP_DB=1 \
+  MYSQL_PASSWORD=x python3 scripts/active/geojson_generate_from_kml.py
 
-# 修复 v7.3 FVS 四图 geourl（封板版本，勿重复执行）
-python3 scripts/ops/fr_patch_v73_geourl.py
+# 测试
+pip install -r requirements-dev.txt
+pytest
 
-# 完成 v7.4 单图 geourl + 切换 JS
-python3 scripts/ops/fr_patch_v74_single_map.py
-
-# 清理 v7.3/v7.4 GeoJSON 目录 .DS_Store、v7.3 FVS .bak
-python3 scripts/ops/fr_cleanup_v73_temp.py
+# 从封板目录生成 golden manifest（只读源目录）
+python3 tests/tools/build_geojson_manifest.py \
+  --source "$FINEREPORT_WEBINF/assets/map/geographic/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap" \
+  --version 农业基地_v7.4_GCJ02_L3_SingleMap
 ```
 
-## 命名约定（摘要）
+## 版本与 GeoJSON 生成
 
-- **脚本文件：** `{领域}_{动作}.py`（如 `geojson_generate_from_kml.py`），**禁止** `01_` 数字前缀
-- **版本目录：** 与部署 GeoJSON 目录名一致，如 `农业基地_v7.2_GCJ02_MP_L2/`
-- **共享/归档：** `versions/_shared/`、`versions/_archive/`
-- **Shell：** `ops/fr_{动作}.sh`
+| 版本目录 | 入口 | 配置 |
+|----------|------|------|
+| `农业基地_v7.0_GCJ02_Polygon` | `versions/.../geojson_generate_from_kml.py` | `profiles.py` |
+| `农业基地_v7.2_GCJ02_MP_L2` | 同上 | 同上 |
+| `农业基地_v7.3_GCJ02_L3` | 同上 | 同上 |
+| `农业基地_v7.4_GCJ02_L3_SingleMap` | 同上 | 不写 legacy `农业基地_GCJ02_*.json` |
 
-> `versions/` 下各版本快照可能仍含旧项目绝对路径，复跑前请对照 `active/` 或 README 路径对照表。
+实现集中在 `lib/geojson/generate.py`；封板 GeoJSON **已有文件**默认不覆盖。

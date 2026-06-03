@@ -13,13 +13,17 @@ from __future__ import annotations
 
 import os
 import shutil
+import sys
 import zipfile
 from datetime import datetime
+from pathlib import Path
 
-FVS_PATH = (
-    "/Applications/FineReport/webapps/webroot/WEB-INF/reportlets/"
-    "YXG-项目/5.农业大屏二期/Agriculture_v7.3_GCJ02_L3.fvs"
-)
+_SCRIPTS = Path(__file__).resolve().parent.parent
+sys.path[:0] = [str(_SCRIPTS.parent), str(_SCRIPTS)]
+
+from lib.fr_paths import fvs_path
+
+FVS_PATH = str(fvs_path("Agriculture_v7.3_GCJ02_L3.fvs"))
 
 REPLACEMENTS = {
     "assets/map/geographic/world/农业基地-大疆测绘/农业基地_v3_GCJ02/农业基地_GCJ02_CS.json": (

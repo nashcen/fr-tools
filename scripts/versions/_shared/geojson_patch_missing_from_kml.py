@@ -12,26 +12,23 @@
 坐标：KML 为 CGCS2000，输出 GeoJSON 与 DB 均为 GCJ-02（复用 lib/coord_convert_wgs84_to_gcj02.transform）
 """
 
-import importlib.util
 import json
 import os
-import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from pathlib import Path
+
 from shapely.geometry import Polygon, mapping
 from shapely.ops import unary_union
 
-# ─── 路径 ────────────────────────────────────────────────────────────────────
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-KML_ROOT = os.path.join(ROOT, 'data', '1.农业基地KML')
-GEO_DIR = (
-    '/Applications/FineReport/webapps/webroot/WEB-INF'
-    '/assets/map/geographic/world/农业基地-大疆测绘/农业基地_v2_WGS84'
-)
-COORD_SCRIPT = os.path.join(os.path.dirname(__file__), '..', '..', 'lib', 'coord_convert_wgs84_to_gcj02.py')
+_SCRIPTS = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(_SCRIPTS.parent), str(_SCRIPTS)]
 
-DB = dict(host='172.17.4.4', port=3310, user='bigdata',
-          pwd='yxgbigdata@YXG321', db='yxg_bigscreen')
+from lib import mysql_cli, settings
+from lib.coord_convert_wgs84_to_gcj02 import transform
+
+KML_ROOT = settings.kml_dir()
+GEO_DIR = settings.geojson_wgs84_dir()
 
 NS = 'http://www.opengis.net/kml/2.2'
 
@@ -50,23 +47,12 @@ GEO_FILES = [
 ]
 
 
-def load_transform():
-    spec = importlib.util.spec_from_file_location('coord_convert', COORD_SCRIPT)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod.transform
-
-
 def mysql_query(sql: str) -> list[list[str]]:
-    r = subprocess.run(
-        ['mysql', f'-h{DB["host"]}', f'-P{DB["port"]}', f'-u{DB["user"]}',
-         f'-p{DB["pwd"]}', DB['db'], '--batch', '--skip-column-names', '-e', sql],
-        capture_output=True, text=True, env=os.environ,
-    )
-    if r.returncode != 0:
-        print(f'MySQL error: {r.stderr}', file=sys.stderr)
+    try:
+        return mysql_cli.query(sql)
+    except RuntimeError as exc:
+        print(exc, file=sys.stderr)
         sys.exit(1)
-    return [line.split('\t') for line in r.stdout.strip().split('\n') if line]
 
 
 def parse_coords(text: str) -> list[tuple[float, float]]:
@@ -225,20 +211,16 @@ def update_db_coords(coords: dict[int, list[float]]) -> None:
         f"  片区纬度=CASE 片区编号\n{chr(10).join(lat_cases)}\n  ELSE 片区纬度 END\n"
         f"WHERE 片区编号 IN ({','.join(ids)});"
     )
-    r = subprocess.run(
-        ['mysql', f'-h{DB["host"]}', f'-P{DB["port"]}', f'-u{DB["user"]}',
-         f'-p{DB["pwd"]}', DB['db']],
-        input=sql, capture_output=True, text=True, env=os.environ,
-    )
-    if r.returncode == 0:
+    try:
+        mysql_cli.execute(sql)
         print(f'\n  DB 更新: {len(ids)} 个片区 → GCJ-02 重心')
-    else:
-        print(f'  DB 更新失败: {r.stderr}', file=sys.stderr)
+    except RuntimeError as exc:
+        print(f'  DB 更新失败: {exc}', file=sys.stderr)
         sys.exit(1)
 
 
 def main():
-    transform_fn = load_transform()
+    transform_fn = transform
     db_info = load_db_info(list(PATCH_TARGETS.keys()))
 
     area_features = []

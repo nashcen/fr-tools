@@ -6,6 +6,7 @@ Output: 农业基地_v2.json, 农业基地_v2-area.json, 农业基地_v2-point.j
 
 import json
 import math
+import os
 from xml.etree import ElementTree as ET
 from collections import defaultdict
 import pymysql
@@ -212,7 +213,7 @@ def load_db_districts():
         host="172.17.4.4",
         port=3310,
         user="bigdata",
-        password="yxgbigdata@YXG321",
+        password=os.environ["MYSQL_PASSWORD"],  # 归档脚本：须配置 .env，勿硬编码
         database="yxg_bigscreen",
         charset="utf8mb4",
     )

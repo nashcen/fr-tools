@@ -115,17 +115,23 @@ def convert_file(src: str, dst: str) -> None:
 
 
 if __name__ == '__main__':
-    # 默认转换项目 GeoJSON 目录中的 农业基地.json
-    GEO_DIR = '/Applications/FineReport/webapps/webroot/WEB-INF/assets/map/geographic/world/农业基地-大疆测绘/农业基地_v2_WGS84'
-    src = os.path.join(GEO_DIR, '农业基地_v2_raw.json')   # 原始 CGCS2000 文件
-    dst = os.path.join(GEO_DIR, '农业基地_v2.json')        # 输出 GCJ-02 文件
+    import sys
+    from pathlib import Path
 
-    if not os.path.exists(src):
+    _scripts = Path(__file__).resolve().parent.parent
+    sys.path[:0] = [str(_scripts.parent), str(_scripts)]
+    from lib import settings
+
+    geo_dir = settings.geojson_wgs84_dir()
+    src = geo_dir / '农业基地_v2_raw.json'
+    dst = geo_dir / '农业基地_v2.json'
+
+    if not src.is_file():
         print(f'源文件不存在: {src}')
         sys.exit(1)
 
     print('开始转换 CGCS2000 → GCJ-02...')
-    convert_file(src, dst)
+    convert_file(str(src), str(dst))
 
     # 验证：路里坑偏移
     test_lng, test_lat = 118.5174286, 28.99795452
