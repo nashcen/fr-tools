@@ -16,10 +16,11 @@
 | `农业基地_v7.0_GCJ02_Polygon` | GCJ-02 | Polygon | 1 | 4 | 旧式 `.json` | ✅ FROZEN | 封板可用 |
 | `农业基地_v7.1_GCJ02_MultiPolygon` | GCJ-02 | MultiPolygon | 1 | 4 | 仅 `-area`/`-point` 扁平 | ✅ FROZEN | 封板可用（L1，可回退）|
 | `农业基地_v7.2_GCJ02_MP_L2` | GCJ-02 | MultiPolygon | **2** | 3+空 | 目录层级 L2 | ✅ FROZEN | 封板可用（L2，可回退）|
-| `农业基地_v7.3_GCJ02_L3` | GCJ-02 | MultiPolygon | **3** | 4 | 基地/片区/地块 | ✅ FROZEN | **生产基线（验收通过）** |
+| `农业基地_v7.3_GCJ02_L3` | GCJ-02 | MultiPolygon | **3** | 4 | 基地/片区/地块 | ✅ FROZEN | **生产基线（四图，验收通过）** |
+| `农业基地_v7.4_GCJ02_L3_SingleMap` | GCJ-02 | MultiPolygon | **3** | 4 | 同 v7.3 | — | 🔧 单图 FVS，待验收 |
 
 > ⛔ 封板目录禁止修改，见 `CLAUDE.md`（**10** 项）。v7.1 / v7.2 / v7.3 **禁止**无后缀 `农业基地_GCJ02_XX.json`。  
-> v7.4 单图试验 **复用** `农业基地_v7.3_GCJ02_L3/`，见 `release-notes-fvs.md`。
+> v7.4 为独立 GeoJSON 目录（内容与 v7.3 对齐），FVS 单图绑 L1 `农业基地-area.json`。
 
 ---
 
@@ -161,3 +162,4 @@
 | 2026-06-03 | v7.2 | 验收通过并封板 |
 | 2026-06-03 | v7.3 | geourl 修复（`fr_patch_v73_geourl.py`）；四图 L2 绑定 |
 | 2026-06-03 | v7.3 | 验收通过并封板（生产基线）；`CLAUDE.md` 封板 **10** 项 |
+| 2026-06-03 | v7.4 | 目录 `农业基地_v7.4_GCJ02_L3_SingleMap`；单图 FVS L1 geourl |

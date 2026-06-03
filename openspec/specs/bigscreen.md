@@ -61,7 +61,7 @@
 
 **v7.0–v7.3：** 四张区域地图叠放于同一位置，切换时通过 JS `setVisible` 控制显隐。  
 **v7.3** 在 L3 GeoJSON 下仍用四图（各绑 L2 geourl），不因三层目录改为单图。  
-**v7.4（规划）：** 新建 `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` 单独验证单图方案，见 `release-notes-fvs.md`。
+**v7.4（单图试验）：** `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` — 仅 `区域地图` 一个 `AREA_MAP`，geourl 绑 L1 `农业基地-area.json`，基地切换用 `panTo`（见 `release-notes-fvs.md`）。
 
 四图布局（当前标准）：
 

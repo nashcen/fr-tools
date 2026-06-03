@@ -48,14 +48,14 @@
   - [x] 版本策略：v7.3 **保持四图**；单图试验列入 **v7.4**（不修改 v7.3 结构）
   - [x] 更新 release-notes-fvs.md
 
-## Phase 1.5：v7.4 单图验证（📋 未开始）
+## Phase 1.5：v7.4 单图验证（🔧 待验收）
 
-- [ ] 设计器复制 `Agriculture_v7.3_GCJ02_L3.fvs` → `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs`
-- [ ] 保留 1 个 `AREA_MAP`，geourl 试 L1 或参数化 L2（见 release-notes-fvs v7.4 表）
-- [ ] GeoJSON **复用** `农业基地_v7.3_GCJ02_L3/`（无变更则不必新目录）
-- [ ] 重写基地切换 JS（替代四路 `setVisible`）
-- [ ] 验收对照 v7.3 四图：切换、树、高亮、L3 下钻
-- [ ] 更新 release-notes-fvs.md / release-notes-geojson.md
+- [x] `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` + `农业基地_v7.4_GCJ02_L3_SingleMap/`
+- [x] 单图 `区域地图`，geourl L1（`fr_patch_v74_single_map.py`）
+- [x] 基地切换 JS：去掉四图 setVisible，统一 `panTo(区域地图)`
+- [x] v7.3 临时文件清理（`fr_cleanup_v73_temp.py`）
+- [x] 更新 release-notes / `agri-v74-single-map` tasks
+- [ ] 用户验收：切换、树、高亮、L3 下钻
 
 ---
 

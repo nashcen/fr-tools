@@ -1,5 +1,5 @@
 """
-【活跃开发 active/ — 日常只改本文件】
+【版本快照 农业基地_v7.4_GCJ02_L3_SingleMap — 与 v7.3 同结构，勿改】
 农业基地片区边界 GeoJSON 生成脚本
 ===================================
 功能：
@@ -11,7 +11,7 @@
 
 输出（至 FineReport 地图资源目录）：
 
-v7.2 L2 两层级（农业基地_v7.2_GCJ02_MP_L2/，对照 world/中国 → 中国/浙江省）：
+v7.2 L2 两层级（农业基地_v7.3_GCJ02_L3/，对照 world/中国 → 中国/浙江省）：
   农业基地-area.json           层级1：基地（省）
   农业基地-point.json
   农业基地/
@@ -50,9 +50,10 @@ from shapely.ops import unary_union, orient
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────
 
-_REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-
-KML_DIR = os.path.join(_REPO_ROOT, 'data', '1.农业基地KML')
+KML_DIR = (
+    '/Users/cenl/docs/work/2025/4.项目管理/P2025-G-001-数智部-农业大屏一期  ★'
+    '/5.数据设计/农业数据/6.片区边界/1.农业基地KML'
+)
 GEO_DIR = (
     '/Applications/FineReport/webapps/webroot/WEB-INF'
     '/assets/map/geographic/world/农业基地-大疆测绘/农业基地_v2_WGS84'
@@ -62,7 +63,10 @@ GCJ02_DIR = (
     '/assets/map/geographic/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap'
 )
 # 历史路径（勿用）：.../world/农业基地-大疆测绘/农业基地_v3_GCJ02
-EXCEL_PATH = os.path.join(_REPO_ROOT, 'data', '农业资产盘点明细.xlsx')
+EXCEL_PATH = (
+    '/Users/cenl/docs/work/2025/4.项目管理/P2025-G-001-数智部-农业大屏一期  ★'
+    '/5.数据设计/农业数据/6.片区边界/农业资产盘点明细.xlsx'
+)
 DB = dict(host='172.17.4.4', port=3310, user='bigdata',
           pwd='yxgbigdata@YXG321', db='yxg_bigscreen')
 

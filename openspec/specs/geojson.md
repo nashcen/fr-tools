@@ -83,7 +83,8 @@
     …
   ⛔ 勿放置 农业基地_GCJ02_XX.json（点地图异常）
 
-农业基地_v7.3_GCJ02_L3/                 ← v7.3 封板（生产）：L3 三层（基地 → 片区 → 地块）
+农业基地_v7.3_GCJ02_L3/                 ← v7.3 封板（生产四图）：L3 三层
+农业基地_v7.4_GCJ02_L3_SingleMap/       ← v7.4 单图：同 L3 结构；FVS geourl 绑 L1 农业基地-area.json
   农业基地-area.json                    ← L1
   农业基地/
     浙江常山-area.json                  ← L2（FVS 区域地图_CS geourl）

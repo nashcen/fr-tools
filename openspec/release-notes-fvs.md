@@ -20,7 +20,7 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 | `Agriculture_v7.1_GCJ02_MultiPolygon.fvs` | `农业基地_v7.1_GCJ02_MultiPolygon` | ✅ | ✅ FROZEN | 封板可用（L1 扁平，可回退）|
 | `Agriculture_v7.2_GCJ02_MP_L2.fvs` | `农业基地_v7.2_GCJ02_MP_L2` | ✅ | ✅ FROZEN | 封板可用（L2，可回退）|
 | `Agriculture_v7.3_GCJ02_L3.fvs` | `农业基地_v7.3_GCJ02_L3` | ✅ | ✅ FROZEN | **生产基线（L3 四图，验收通过）** |
-| `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | `农业基地_v7.3_GCJ02_L3`（复用）| — | — | 📋 规划：单图验证 |
+| `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` | `农业基地_v7.4_GCJ02_L3_SingleMap` | ✅ | — | 🔧 单图已配置，待验收 |
 
 > ⛔ 封板版本禁止修改，见 `CLAUDE.md`。  
 > **路线：** v7.3 固定四图；v7.4 新建 FVS 试单图，GeoJSON 目录可与 v7.3 共用。
@@ -170,22 +170,25 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 
 ## 🔧 开发 / 验证版本
 
-### `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` — 📋 规划（未创建）
+### `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs` — 单图（待验收）
 
 | 项 | 值 |
 |----|-----|
-| 目的 | 验证 **单张** `AREA_MAP` 能否替代四图（L1 入口或参数化 L2 geourl）|
-| GeoJSON | **复用** `农业基地_v7.3_GCJ02_L3/`（不新建目录，除非单图需改数据）|
-| 与 v7.3 差异 | 仅 FVS 组件数与切换 JS；v7.3 四图版本保持不变 |
-| 创建方式 | 设计器复制 v7.3 → 重命名 v7.4 → 删三图留一图 → 改 geourl/切换逻辑 |
-| 验收 | 四基地切换、片区树、高亮、下钻 L3；对比 v7.3 四图行为 |
+| 目的 | **单张** `区域地图` 替代四图；L1 geourl + `panTo` 切换基地 |
+| GeoJSON | `农业基地_v7.4_GCJ02_L3_SingleMap/`（L3 三层，与 v7.3 同结构）|
+| 与 v7.3 差异 | 仅 1 个 `AREA_MAP`；无 `区域地图_CS/WS/BS/YY` setVisible |
+| 修复脚本 | `scripts/ops/fr_patch_v74_single_map.py` |
+| 状态 | ✅ geourl/JS 已写入；⬜ 待验收 |
 
-**候选 geourl（待实测二选一）：**
+**geourl（单图 L1 入口）：**
 
-| 方案 | geourl | 备注 |
-|------|--------|------|
-| A | `…/农业基地_v7.3_GCJ02_L3/农业基地-area.json` | L1 入口 + 地图内下钻 |
-| B | 单图 + 参数/公式切换 L2 `农业基地/{基地名}-area.json` | 需设计器支持动态 geourl |
+| 组件名 | geourl（相对 `WEB-INF/`）|
+|--------|--------------------------|
+| `区域地图` | `assets/map/geographic/农业基地-大疆测绘/农业基地_v7.4_GCJ02_L3_SingleMap/农业基地-area.json` |
+
+**基地切换：** 各基地按钮仅 `duchamp.getWidgetByName("区域地图").panTo([lat,lng])`（保留原四基地坐标）。
+
+**对照：** 生产封板仍用 v7.3 四图；v7.4 为单图试验版。
 
 ---
 
@@ -225,6 +228,8 @@ Agriculture_v{版本}_{坐标系}_{几何描述}.fvs
 | 2026-06-03 | **v7.2 封板**（FROZEN）：L2 验收通过 |
 | 2026-06-03 | `CLAUDE.md` 封板项增至 **8**（含 v7.2 FVS + GeoJSON）|
 | 2026-06-03 | v7.3 geourl 修复；**v7.3 封板**；生产基线升至 v7.3；封板 **10** 项 |
+| 2026-06-03 | v7.3 临时文件清理（`.bak`、`.DS_Store`）|
+| 2026-06-03 | v7.4 单图 FVS：`fr_patch_v74_single_map.py`（L1 geourl + 统一 `区域地图`）|
 
 ---
 
