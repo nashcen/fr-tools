@@ -186,9 +186,9 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 
 **封板后已知限制（不修复）：** 与 v7.3 相同（酉阳 7/16 片区；9 片区待 KML）。
 
-**配置脚本：** `scripts/ops/fr_patch_v74_single_map.py`；**3.5.1 设计器兼容合并：** `scripts/ops/fr_merge_v74_46_to_351.py`（从 `_4.6.fvs` 移植 geourl + Tab/视图树交互，保留 `templateVersion=001.016.004001000`）。
+**配置脚本：** `scripts/ops/fr_patch_v74_single_map.py`；**3.5.1 合并（仅 geourl + Tab panTo）：** `scripts/ops/fr_merge_v74_46_to_351.py --restore-backup`。勿从 4.6 整段替换 store（会去掉片区下拉框并保留设计器对齐线）。
 
-**设计器版本：** 生产 FineReport **3.5.1** 无法打开 4.6.0 保存的 FVS；本地 4.6 稿另存为 `Agriculture_v7.4_GCJ02_L3_SingleMap_4.6.fvs`，合并后写入正式 `Agriculture_v7.4_GCJ02_L3_SingleMap.fvs`。
+**设计器版本：** 生产 **3.5.1** 无法打开 4.6.0 稿；参考稿为 `Agriculture_v7.4_GCJ02_L3_SingleMap_4.6.fvs`，正式文件保留服务器下拉框交互。
 
 ---
 

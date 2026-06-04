@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """
-将 Agriculture_v7.4_GCJ02_L3_SingleMap_4.6.fvs 的 geourl 与单图交互逻辑
-合并到 3.5.1 兼容的 Agriculture_v7.4_GCJ02_L3_SingleMap.fvs（保留 templateVersion）。
+将 4.6 参考稿的 **geourl** 合并进 3.5.1 正式 FVS，保留服务器稿的片区下拉框与 Tab 交互。
 
-用法（在 FineReport WEB-INF 下）:
+⚠ 不要从 4.6 整段替换 widgetEvents / 不要 hide 下拉框 / 不要追加视图树——
+  那是 4.6 设计器里的另一套 UI，会去掉「片区下拉框」并在画布显示对齐辅助线。
+
+用法:
   python3 scripts/ops/fr_merge_v74_46_to_351.py
+  python3 scripts/ops/fr_merge_v74_46_to_351.py --restore-backup   # 从最近 .bak-merge-* 恢复后再打 geourl
 """
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
@@ -31,21 +35,28 @@ GEOURL_L1 = (
     "农业基地_v7.4_GCJ02_L3_SingleMap/农业基地-area.json"
 )
 
-# 4.6 有、3.5.1 无的控件（视图树、片区标题/文本框等）
-WIDGETS_ONLY_46_PREFIXES = (
-    "视图树1_",
-    "标题1_",
-    "文本框1_",
-    "表格1_天气",
-    "富文本-info",
-    "富文本-天气_c1",
-    "北极星_总亩数",
-)
+# 基地 Tab：仅在 3.5.1 脚本末尾追加 4.6 的 panTo（保留下拉框 setVisible）
+TAB_NAMES = {f"c9-n1-t{i}-t{j}" for i in range(4) for j in range(4)}
 
-# 从 4.6 复制 widgetEvents 的控件（基地 Tab 等）
-COPY_EVENTS_NAMES = {
-    f"c9-n1-t{i}-t{j}" for i in range(4) for j in range(4)
-} | {"日常操作-轮播"}
+# 4.6 各 Tab 固定 panTo（lat, lng 顺序与 4.6 一致）
+TAB_PANTO = {
+    "c9-n1-t0-t0": [29.0100448191025, 118.515585488198],  # 常山
+    "c9-n1-t0-t1": [30.3720862, 106.1657042],  # 武胜
+    "c9-n1-t0-t2": [24.2106567, 106.1106057],  # 酉阳
+    "c9-n1-t0-t3": [28.9141381, 108.910525],  # 百色
+    "c9-n1-t1-t0": [29.0100448191025, 118.515585488198],
+    "c9-n1-t1-t1": [30.3720862, 106.1657042],
+    "c9-n1-t1-t2": [24.2106567, 106.1106057],
+    "c9-n1-t1-t3": [28.9141381, 108.910525],
+    "c9-n1-t2-t0": [29.0100448191025, 118.515585488198],
+    "c9-n1-t2-t1": [30.3720862, 106.1657042],
+    "c9-n1-t2-t2": [24.2106567, 106.1106057],
+    "c9-n1-t2-t3": [28.9141381, 108.910525],
+    "c9-n1-t3-t0": [29.0100448191025, 118.515585488198],
+    "c9-n1-t3-t1": [30.3720862, 106.1657042],
+    "c9-n1-t3-t2": [24.2106567, 106.1106057],
+    "c9-n1-t3-t3": [28.9141381, 108.910525],
+}
 
 
 def load_store_json(zip_path: Path) -> dict:
@@ -98,59 +109,92 @@ def patch_geourl_chart(text: str) -> tuple[str, int]:
     return text, n
 
 
-def merge_store(target: dict, source: dict) -> dict:
-    out = json.loads(json.dumps(target))  # deep copy
-    out["templateVersion"] = target.get("templateVersion")
-
-    widgets_t = out["stories"][0]["widgets"]
-    widgets_s = source["stories"][0]["widgets"]
-    by_name_t = {w.get("name"): w for w in widgets_t if w.get("name")}
-    by_name_s = {w.get("name"): w for w in widgets_s if w.get("name")}
-
-    merged_events = 0
-    hidden_dropdown = 0
-    added = 0
-
-    for w in widgets_t:
-        name = w.get("name") or ""
-        if name in by_name_s and name in COPY_EVENTS_NAMES:
-            w["widgetEvents"] = json.loads(
-                json.dumps(by_name_s[name].get("widgetEvents", []))
-            )
-            merged_events += 1
-        if name.startswith("下拉框_"):
-            w["hide"] = True
-            hidden_dropdown += 1
-
-    existing = set(by_name_t)
-    for w in widgets_s:
-        name = w.get("name") or ""
-        if not name or name in existing:
+def _append_panto_to_tab(store: dict) -> int:
+    """在 Tab 的 JavaScript 动作末尾追加 区域地图.panTo（不改动下拉框逻辑）。"""
+    n = 0
+    by_name = {
+        w.get("name"): w
+        for w in store["stories"][0]["widgets"]
+        if w.get("name")
+    }
+    pan_line_tpl = (
+        'duchamp.getWidgetByName("区域地图").panTo([{lat}, {lng}]);'
+    )
+    for tab_name, coords in TAB_PANTO.items():
+        w = by_name.get(tab_name)
+        if not w:
             continue
-        if name.startswith(WIDGETS_ONLY_46_PREFIXES) or name in (
-            "表格1_天气",
-            "北极星_总亩数",
-        ):
-            widgets_t.append(json.loads(json.dumps(w)))
-            existing.add(name)
-            added += 1
+        lat, lng = coords
+        pan_line = pan_line_tpl.format(lat=lat, lng=lng)
+        for block in w.get("widgetEvents") or []:
+            for ev in block.get("events") or []:
+                for act in ev.get("actions") or []:
+                    if act.get("type") != "javascript":
+                        continue
+                    code = act.get("body", {}).get("code") or ""
+                    if "getWidgetByName(\"区域地图\").panTo" in code:
+                        continue
+                    if "下拉框_" not in code:
+                        continue
+                    act["body"]["code"] = code.rstrip() + "\n\n" + pan_line + "\n"
+                    n += 1
+    return n
 
+
+def merge_store_minimal(target: dict) -> dict:
+    out = json.loads(json.dumps(target))
+    out["showAlignmentLine"] = False
+    removed = 0
+    widgets = out["stories"][0]["widgets"]
+    # 去掉误合并进来的 4.6 视图树 / 片区标题文本框（若存在）
+    drop_prefixes = ("视图树1_", "标题1_", "文本框1_")
+    kept = []
+    for w in widgets:
+        name = w.get("name") or ""
+        if name.startswith(drop_prefixes):
+            removed += 1
+            continue
+        if name.startswith("下拉框_"):
+            w.pop("hide", None)
+            if name == "下拉框_常山片区":
+                w["hide"] = False
+            elif name.endswith("片区"):
+                w["hide"] = True
+        kept.append(w)
+    out["stories"][0]["widgets"] = kept
+    panto = _append_panto_to_tab(out)
     print(
-        f"store merge: widgetEvents copied={merged_events}, "
-        f"dropdown hide={hidden_dropdown}, widgets added={added}"
+        f"store: showAlignmentLine=False, removed_46_widgets={removed}, "
+        f"tab_panTo_appended={panto}"
     )
     return out
 
 
-def merge_fvs() -> None:
+def latest_backup() -> Path | None:
+    parent = TARGET.parent
+    candidates = sorted(
+        parent.glob(f"{TARGET.name}.bak-merge-*"),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
+    return candidates[0] if candidates else None
+
+
+def merge_fvs(*, restore_backup: bool) -> None:
     if not TARGET.is_file():
         raise SystemExit(f"target missing: {TARGET}")
-    if not SOURCE_46.is_file():
-        raise SystemExit(f"source missing: {SOURCE_46}")
 
-    store_46 = load_store_json(SOURCE_46)
-    store_351 = load_store_json(TARGET)
-    merged_store = merge_store(store_351, store_46)
+    src_zip = TARGET
+    if restore_backup:
+        bak = latest_backup()
+        if not bak:
+            raise SystemExit("no .bak-merge-* backup found")
+        shutil.copy2(bak, TARGET)
+        print(f"restored from: {bak}")
+        src_zip = TARGET
+
+    store = load_store_json(src_zip)
+    merged_store = merge_store_minimal(store)
     store_text = json.dumps(merged_store, ensure_ascii=False, separators=(",", ":"))
 
     stamp = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -186,17 +230,20 @@ def merge_fvs() -> None:
                 data = encode_store_in_tpl(tpl, store_text).encode("utf-8")
             zout.writestr(info, data)
 
-    if chart_patches == 0:
-        print("warning: no chart geourl changes (already correct?)")
-
-    os_replace = __import__("os").replace
-    os_replace(tmp, TARGET)
+    __import__("os").replace(tmp, TARGET)
     print(f"done: {TARGET}")
     print(f"geourl: {GEOURL_L1}")
 
 
 def main() -> None:
-    merge_fvs()
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--restore-backup",
+        action="store_true",
+        help="先从最近的 .bak-merge-* 恢复服务器 3.5.1 稿，再打 geourl",
+    )
+    args = ap.parse_args()
+    merge_fvs(restore_backup=args.restore_backup)
 
 
 if __name__ == "__main__":
