@@ -186,9 +186,9 @@ FVS 与 GeoJSON 目录**一一对应**命名：
 
 **封板后已知限制（不修复）：** 与 v7.3 相同（酉阳 7/16 片区；9 片区待 KML）。
 
-**配置脚本：** `scripts/ops/fr_patch_v74_single_map.py`；**3.5.1 合并（仅 geourl + Tab panTo）：** `scripts/ops/fr_merge_v74_46_to_351.py --restore-backup`。勿从 4.6 整段替换 store（会去掉片区下拉框并保留设计器对齐线）。
+**配置脚本：** `scripts/ops/fr_patch_v74_single_map.py`（会改 store，勿对服务器 3.5.1 稿滥用）。**仅 GeoJSON geourl：** `scripts/ops/fr_merge_v74_46_to_351.py --restore-backup`（只改 `bf4df8fc…chart` 中 `农业基地.json` → `农业基地-area.json`，**store 一字不改**）。
 
-**设计器版本：** 生产 **3.5.1** 无法打开 4.6.0 稿；参考稿为 `Agriculture_v7.4_GCJ02_L3_SingleMap_4.6.fvs`，正式文件保留服务器下拉框交互。
+**设计器版本：** 生产 **3.5.1** 无法打开 4.6.0 稿；`Agriculture_v7.4_GCJ02_L3_SingleMap_4.6.fvs` 仅作 geourl 路径对照，不得整段合并 store（会误改下拉框、实时预警 Tab、视图树等）。
 
 ---
 
